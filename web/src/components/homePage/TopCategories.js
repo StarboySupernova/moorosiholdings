@@ -26,6 +26,16 @@ function TopCategories() {
   const activities = data.allSanitySpotlight.nodes[0].activity;
   return (
     <TopCategoriesStyles>
+      <SectionTitle className="centre__text">Our Vision</SectionTitle>
+      <ParagraphText className="hero__text centre__text">
+        Creating resilient and sustainably developed communities
+      </ParagraphText>
+      <SectionTitle className="centre__text">Our Mission</SectionTitle>
+      <ParagraphText className="hero__text centre__text">
+        Strengthening the capabilities of grassroots communities to collectively
+        strategize, mitigate, and respond to a spectrum of natural and
+        anthropogenic shocks and hazards.
+      </ParagraphText>
       <SectionTitle>Core Initiatives</SectionTitle>
       <ParagraphText>
         Catalyzing Community & Grassroot Sustainability: Our Impactful
