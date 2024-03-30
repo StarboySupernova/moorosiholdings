@@ -16,9 +16,10 @@ function HeroSection() {
               grassroots-driven environmentally friendly intervention methods
             </h1>
             <ParagraphText className="hero__text">
-              We actively leverage cutting edge solutions & collective effort to
-              compliment and augment vulnerable rural communities' ability to
-              envision and build a resilient tomorrow, one community at a time
+              We proactively leverage cutting edge solutions & collective effort
+              to compliment and augment the capacity of vulnerable rural
+              populations to envision and construct a resilient, environmentally
+              sustainable future, one community at a time.
             </ParagraphText>
             <Button to="/spotlight" tag={Link} className="hero__button">
               Explore Our Work
