@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import { HeroSectionStyles } from '../../styles/homePage/HeroSectionStyles';
 import ParagraphText from '../typography/ParagraphText';
 import Button from '../buttons/Button';
-import { SectionTitle } from '../typography/Title';
 
 function HeroSection() {
   return (
@@ -20,16 +19,6 @@ function HeroSection() {
               We actively leverage cutting edge solutions & collective effort to
               compliment and augment vulnerable rural communities' ability to
               envision and build a resilient tomorrow, one community at a time
-            </ParagraphText>
-            <SectionTitle>Our Vision</SectionTitle>
-            <ParagraphText className="hero__text">
-              Creating resilient and sustainably developed communities
-            </ParagraphText>
-            <SectionTitle>Our Mission</SectionTitle>
-            <ParagraphText className="hero__text">
-              Strengthening the capabilities of grassroots communities to
-              collectively strategize, mitigate, and respond to a spectrum of
-              natural and anthropogenic shocks and hazards.
             </ParagraphText>
             <Button to="/spotlight" tag={Link} className="hero__button">
               Explore Our Work
