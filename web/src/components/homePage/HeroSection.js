@@ -33,6 +33,7 @@ function HeroSection() {
             <ParagraphText className="hero__text">
               Creating resilient and sustainably developed communities
             </ParagraphText>
+            <SectionTitle>Our Mission</SectionTitle>
             <ParagraphText className="hero__text">
               Strengthening the capabilities of grassroots communities to
               collectively strategize, mitigate, and respond to a spectrum of
