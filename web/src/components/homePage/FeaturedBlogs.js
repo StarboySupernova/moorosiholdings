@@ -37,7 +37,7 @@ function FeaturedBlogs() {
   const spotlightBlogs = data.allSanitySpotlight.nodes[0].blogs;
   return (
     <FeaturedBlogsStyles>
-      <SectionTitle>Our Vision</SectionTitle>
+      <SectionTitle className="centre__text">Our Vision</SectionTitle>
       <ParagraphText className="hero__text centre__text">
         Creating resilient and sustainably developed communities
       </ParagraphText>
@@ -47,10 +47,9 @@ function FeaturedBlogs() {
         strategize, mitigate, and respond to a spectrum of natural and
         anthropogenic shocks and hazards.
       </ParagraphText>
-      <SectionTitle className="centre__text">Latest From DEMT</SectionTitle>
-      <ParagraphText className="featuredBlogs__text centre__text">
+      <SectionTitle className="centre__text">
         Upcoming News, Updates & Events
-      </ParagraphText>
+      </SectionTitle>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
   );
