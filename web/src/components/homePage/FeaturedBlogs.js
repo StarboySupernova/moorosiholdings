@@ -41,9 +41,8 @@ function FeaturedBlogs() {
         Upcoming News, Updates & Events
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Disaster and Environmental
-        Management Trust's projects, events, and initiatives in rural
-        development.
+        Stay informed with the latest updates on D.E.M.T's projects, events, and
+        initiatives in rural development.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
