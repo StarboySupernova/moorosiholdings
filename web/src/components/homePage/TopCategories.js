@@ -26,9 +26,10 @@ function TopCategories() {
   const activities = data.allSanitySpotlight.nodes[0].activity;
   return (
     <TopCategoriesStyles>
-      <SectionTitle>Top Activities</SectionTitle>
+      <SectionTitle>Core Initiatives</SectionTitle>
       <ParagraphText>
-        Explore Internet Excellence: Your journey begins here with us
+        Catalyzing Community & Grassroot Sustainability: Our Impactful
+        Interventions
       </ParagraphText>
       <ActivityGrid activities={activities} />
     </TopCategoriesStyles>

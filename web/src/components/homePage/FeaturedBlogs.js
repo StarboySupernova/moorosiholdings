@@ -37,9 +37,9 @@ function FeaturedBlogs() {
   const spotlightBlogs = data.allSanitySpotlight.nodes[0].blogs;
   return (
     <FeaturedBlogsStyles>
-      <SectionTitle>Latest from DEMT</SectionTitle>
+      <SectionTitle>Latest From DEMT</SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Check Out our most recent discounts and specials today
+        Upcoming News, Updates & Events
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
