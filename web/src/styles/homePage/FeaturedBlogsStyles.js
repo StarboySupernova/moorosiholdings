@@ -5,4 +5,7 @@ export const FeaturedBlogsStyles = styled.div`
   .featuredBlogs__text {
     max-width: 450px;
   }
+  .centre__text {
+    text-align: center;
+  }
 `;

@@ -38,6 +38,9 @@ export const HeroSectionStyles = styled.div`
       .hero__button {
         margin-top: 1.5rem;
       }
+      .centre__text {
+        text-align: center;
+      }
     }
     .right {
       position: absolute;

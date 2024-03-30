@@ -5,4 +5,7 @@ export const TopCategoriesStyles = styled.div`
   .info {
     max-width: 400px;
   }
+  .centre__text {
+    text-align: center;
+  }
 `;
