@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const SearchResultItemStyles = styled(Link)`
   width: 100%;
-  background-color: #826c06;
+  background-color: #1C3803;
   padding: 0.8rem;
   display: flex;
   align-items: center;
