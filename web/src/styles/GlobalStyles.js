@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
     --darkBlue: #070747; 
     --darkPurple: #0E0034;
     --black-1: #000C02;
-    --black-2: linear-gradient(135deg, #052A00, #081000); 
+    --black-2: linear-gradient(135deg, #052A00, #32876C); 
     --white-1: #C6BED9;
     --gray: #64718A;
     --grey: var(--gray);
