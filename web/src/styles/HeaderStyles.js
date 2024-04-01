@@ -48,7 +48,7 @@ export default styled.header`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #2c313e;
+      background-color: #0a2b63;
     }
   }
   .mobileMenuCloseBtn,

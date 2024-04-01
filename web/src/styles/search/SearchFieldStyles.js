@@ -23,7 +23,7 @@ export const SearchFieldStyles = styled.label`
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--primary);
+    color: #048B63;
   }
   @media only screen and (max-width: 768px) {
     input {
