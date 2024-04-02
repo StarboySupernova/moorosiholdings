@@ -1,3 +1,4 @@
+import React from 'react';
 import { MdImage } from 'react-icons/md';
 
 export default {

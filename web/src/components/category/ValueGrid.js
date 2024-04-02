@@ -1,14 +1,14 @@
 import React from 'react';
-import { CategoryGridStyles } from '../../styles/category/CategoryGridStyles';
+import { ValueGridStyles } from '../../styles/category/CategoryGridStyles';
 import ValueItem from './ValueItem';
 
 function ValueGrid({ demtValues }) {
   return (
-    <CategoryGridStyles>
+    <ValueGridStyles>
       {demtValues.map((item) => (
         <ValueItem key={item.id} description={item._rawDescription} />
       ))}
-    </CategoryGridStyles>
+    </ValueGridStyles>
   );
 }
 
