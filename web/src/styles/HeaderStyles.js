@@ -72,7 +72,7 @@ export default styled.header`
         right: 0;
         width: 80%;
         transform: translateX(100%);
-        background-color: rgba(34, 11, 34, 0.9);
+        background-color: rgba(34, 11, 34, 0.95);
         height: 100vh;
         display: flex;
         align-items: center;
