@@ -7,12 +7,12 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   :root{
-    --primary: #4A46EB;
-    --secondary: #753AFF;
+    --primary: #078656;
+    --secondary: #12933F;
     --darkBlue: #070747; 
     --darkPurple: #0E0034;
-    --black-1: #0D121F;
-    --black-2: #121826;
+    --black-1: #000C02;
+    --black-2: #052A00;
     --white-1: #C6BED9;
     --gray: #64718A;
     --grey: var(--gray);

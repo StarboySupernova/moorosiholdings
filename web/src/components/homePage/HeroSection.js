@@ -22,7 +22,7 @@ function HeroSection() {
               sustainable future, one community at a time.
             </ParagraphText>
             <Button to="/spotlight" tag={Link} className="hero__button">
-              Explore Our Work
+              Explore Our Latest Work
             </Button>
           </div>
           <div className="right">

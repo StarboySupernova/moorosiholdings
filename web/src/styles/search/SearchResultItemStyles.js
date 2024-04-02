@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 export const SearchResultItemStyles = styled(Link)`
   width: 100%;
-  background-color: #1f1f47;
+  background-color: #1C3803;
   padding: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
+  border-radius: 8px; 
   .img {
     width: 50px;
     height: 40px;

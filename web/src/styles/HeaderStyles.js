@@ -48,7 +48,7 @@ export default styled.header`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #2c313e;
+      background-color: #0a2b63;
     }
   }
   .mobileMenuCloseBtn,
@@ -72,7 +72,7 @@ export default styled.header`
         right: 0;
         width: 80%;
         transform: translateX(100%);
-        background-color: var(--black-2);
+        background-color: rgba(34, 11, 34, 0.95);
         height: 100vh;
         display: flex;
         align-items: center;

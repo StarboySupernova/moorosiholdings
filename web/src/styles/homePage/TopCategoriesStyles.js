@@ -8,4 +8,7 @@ export const TopCategoriesStyles = styled.div`
   .centre__text {
     text-align: center;
   }
+  .right__text {
+    text-align: right;
+  }
 `;

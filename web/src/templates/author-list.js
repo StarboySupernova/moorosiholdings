@@ -35,7 +35,7 @@ function AuthorList({ data, pageContext }) {
       <SEO title="About Us & Our Team" />
       <div className="container">
         <PageHeader
-          title="All Personnel"
+          title="About Us"
           description="Our dedicated, highly trained staff with years of deep, relevant experience whose sole task is to seamlessly bring your project to fruition"
         />
         <AuthorGrid authors={authors} />

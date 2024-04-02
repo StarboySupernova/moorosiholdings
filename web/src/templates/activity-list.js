@@ -35,7 +35,7 @@ function Activity({ data, pageContext }) {
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="All Activities"
+            title="Our Work"
             description="Elevate your online journey with us. Connect, create, and thrive in a digital world. Your success, our priority."
           />
           <ActivityGrid activities={activities} />
