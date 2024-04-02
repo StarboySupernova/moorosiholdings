@@ -15,7 +15,7 @@ export const CategoryGridStyles = styled.div`
 export const ValueGridStyles = styled.div`
   display: grid;
   margin-top: 1rem;
-  gap: 5rem;
+  gap: 1rem;
   grid-template-columns: repeat(
     auto-fit,
     minmax(250px, 1fr)
