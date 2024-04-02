@@ -23,6 +23,10 @@ export const SingleCategoryStyles = styled.div`
       height: 100%;
       z-index: -1;
     }
+    .custom-image {
+      max-width: 200px;
+      max-height: 200px;
+    }
   }
   @media only screen and (max-width: 768px) {
     .pageHeader {

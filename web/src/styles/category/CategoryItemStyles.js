@@ -10,4 +10,8 @@ export const CategoryItemStyles = styled.div`
   .text {
     margin-bottom: 2rem;
   }
+  .custom-image {
+    max-width: 200px;
+    max-height: 200px;
+  }
 `;
