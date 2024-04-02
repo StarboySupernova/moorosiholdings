@@ -5,6 +5,6 @@ export const CustomImageStyles = styled.div`
     max-width: 180px;
     max-height: 180px;
     border-radius: 10px;
-    margin: 20px;
+    margin: 15px;
   }
 `;
