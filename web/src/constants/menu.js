@@ -16,7 +16,7 @@ export const menu = [
     path: '/categories',
   },
   {
-    title: 'Our Team',
+    title: 'About Us',
     path: '/team',
   },
 ];
