@@ -8,6 +8,7 @@ import ParagraphText from './typography/ParagraphText';
 import { Title } from './typography/Title';
 import sanityConfig from '../../sanity-config';
 import { getSanityImageData } from '../utils/getSanityImageData';
+import { CustomImageStyles } from '../styles/CustomImageStyles';
 
 const myPortableTextComponents = {
   block: {
@@ -38,11 +39,13 @@ const myPortableTextComponents = {
       });
 
       return (
-        <GatsbyImage
-          image={gatsbyImageData}
-          alt={value.alt}
-          className="bodyImage"
-        />
+        <CustomImageStyles>
+          <GatsbyImage
+            image={gatsbyImageData}
+            alt={value.alt}
+            className="bodyImage custom-image"
+          />
+        </CustomImageStyles>
       );
     },
   },
