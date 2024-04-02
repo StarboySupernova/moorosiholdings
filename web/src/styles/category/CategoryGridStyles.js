@@ -18,7 +18,7 @@ export const ValueGridStyles = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(250px, 1fr)
+    minmax(300px, 1fr)
   ); /* Reduced the minimum width to 250px */
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(
