@@ -12,14 +12,7 @@ function Footer() {
       <div className="container">
         <Logo />
         <ParagraphText className="footer__text">
-          "Thank you for choosing DEMT, where your automotive journey is our top
-          priority. Experience excellence in car repair services, meticulous
-          diagnostics, and collaborative solutions. Elevate your driving
-          experience with skilled mechanics, advanced technology, and
-          comprehensive vehicle care. Connect with us for seamless automotive
-          solutions, and explore the road with confidence. Your satisfaction is
-          at the core of our service. Choose DEMT – Your pathway to a reliable
-          and well-maintained vehicles."
+          "At Disaster Environmental Management Trust (DEMT), our mission is to protect communities and ecosystems in the face of environmental challenges. We are dedicated to developing innovative solutions for disaster response, environmental conservation, and sustainable recovery. Through collaborative efforts, and grass roots community engagement, we work tirelessly to mitigate environmental risks and support resilient communities. Join us in our commitment to creating a safer, more sustainable future. Together, we can make a meaningful difference in environmental management and disaster preparedness."
         </ParagraphText>
         <ul className="footer__menuList">
           {menu.map((item) => (
