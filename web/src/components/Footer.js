@@ -1,10 +1,10 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import { menu } from '../constants/menu';
-import { socialLinks } from '../constants/socialLinks';
-import { FooterStyles } from '../styles/FooterStyles';
-import Logo from './Logo';
-import ParagraphText from './typography/ParagraphText';
+import { Link } from "gatsby";
+import React from "react";
+import { menu } from "../constants/menu";
+import { socialLinks } from "../constants/socialLinks";
+import { FooterStyles } from "../styles/FooterStyles";
+import Logo from "./Logo";
+import ParagraphText from "./typography/ParagraphText";
 
 function Footer() {
   return (
@@ -12,7 +12,11 @@ function Footer() {
       <div className="container">
         <Logo />
         <ParagraphText className="footer__text">
-          "At Disaster Environmental Management Trust (DEMT), our mission is to protect communities and ecosystems in the face of environmental challenges. We are dedicated to developing innovative solutions for disaster response, environmental conservation, and sustainable recovery. Through collaborative efforts, and grass roots community engagement, we work tirelessly to mitigate environmental risks and support resilient communities. Join us in our commitment to creating a safer, more sustainable future. Together, we can make a meaningful difference in environmental management and disaster preparedness."
+          "Diginotive Solutions (Private) Limited is a Zimbabwe-based Research
+          and Development company specialising in ICT, educational technology,
+          and AI content development. We empower businesses and organisations
+          through innovative problem-solving rooted in thorough research and
+          custom technological solutions tailored to the African context."
         </ParagraphText>
         <ul className="footer__menuList">
           {menu.map((item) => (
@@ -32,7 +36,8 @@ function Footer() {
           P.O. Box 42, Mutoko Rural District, Zimbabwe
         </ParagraphText>
         <ParagraphText className="copyright">
-          © DEMT | EST. 2019 | {new Date().getFullYear()} | All rights reserved
+          © Diginotive | EST. 2019 | {new Date().getFullYear()} | All rights
+          reserved
         </ParagraphText>
       </div>
     </FooterStyles>

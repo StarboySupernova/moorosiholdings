@@ -1,10 +1,10 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import PageSpace from '../components/PageSpace';
-import SEO from '../components/seo';
-import PageHeader from '../components/PageHeader';
-import ActivityGrid from '../components/category/ActivityGrid';
-import Pagination from '../components/Pagination';
+import React from "react";
+import { graphql } from "gatsby";
+import PageSpace from "../components/PageSpace";
+import SEO from "../components/seo";
+import PageHeader from "../components/PageHeader";
+import ActivityGrid from "../components/category/ActivityGrid";
+import Pagination from "../components/Pagination";
 
 export const ActivityListQuery = graphql`
   query activitiesQuery($limit: Int!, $offset: Int!) {
@@ -36,7 +36,7 @@ function Activity({ data, pageContext }) {
         <div className="container">
           <PageHeader
             title="Our Work"
-            description="DEMT's impactful work aimed at community empowerment and rapid development, all within the ever-important constraint of environmental sustainability & conservation"
+            description="Diginotive's impactful work aimed at community empowerment and rapid development, all within the ever-important constraint of environmental sustainability & conservation"
           />
           <ActivityGrid activities={activities} />
           {numberOfPages > 1 && (

@@ -1,15 +1,15 @@
-import { graphql, Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { format } from 'date-fns';
-import { BiCategory } from 'react-icons/bi';
-import { FiCalendar, FiUser } from 'react-icons/fi';
-import PageSpace from '../components/PageSpace';
-import ParagraphText from '../components/typography/ParagraphText';
-import { Title } from '../components/typography/Title';
-import { SingleBlogStyles } from '../styles/blog/SingleBlogStyles';
-import MyPortableText from '../components/MyPortableText';
-import SEO from '../components/seo';
+import { graphql, Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { format } from "date-fns";
+import { BiCategory } from "react-icons/bi";
+import { FiCalendar, FiUser } from "react-icons/fi";
+import PageSpace from "../components/PageSpace";
+import ParagraphText from "../components/typography/ParagraphText";
+import { Title } from "../components/typography/Title";
+import { SingleBlogStyles } from "../styles/blog/SingleBlogStyles";
+import MyPortableText from "../components/MyPortableText";
+import SEO from "../components/seo";
 
 /// id coming from context defined in gatsby-node
 export const postQuery = graphql`
@@ -45,7 +45,7 @@ function SingleBlog({ data }) {
   const blog = data.sanityBlog;
   return (
     <SingleBlogStyles>
-      <SEO title={`DEMT-${blog.title}`} />
+      <SEO title={`Diginotive-${blog.title}`} />
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <div className="blog-header">
@@ -57,7 +57,7 @@ function SingleBlog({ data }) {
             <Title className="title">{blog.title}</Title>
             <ParagraphText className="publishedAt">
               <FiCalendar />
-              {format(new Date(blog.publishedAt), 'p, MMMM dd, yyyy')}
+              {format(new Date(blog.publishedAt), "p, MMMM dd, yyyy")}
             </ParagraphText>
             <ParagraphText className="categoriesText">
               <BiCategory />
@@ -67,7 +67,7 @@ function SingleBlog({ data }) {
                     <Link to={`/categories/${item.slug.current}`}>
                       {item.title}
                     </Link>
-                    {index < blog.categories.length - 1 ? ', ' : ''}
+                    {index < blog.categories.length - 1 ? ", " : ""}
                   </span>
                 ))}
               </span>

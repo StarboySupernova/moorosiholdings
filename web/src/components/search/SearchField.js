@@ -1,13 +1,13 @@
-import React from 'react';
-import { FiSearch } from 'react-icons/fi';
-import { SearchFieldStyles } from '../../styles/search/SearchFieldStyles';
+import React from "react";
+import { FiSearch } from "react-icons/fi";
+import { SearchFieldStyles } from "../../styles/search/SearchFieldStyles";
 
 function SearchField({ value, setValue, onFocus }) {
   return (
     <SearchFieldStyles>
       <input
         type="text"
-        placeholder="DEMT Search"
+        placeholder="Diginotive Search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onFocus={onFocus && onFocus}

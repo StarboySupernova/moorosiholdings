@@ -1,12 +1,12 @@
-import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import BlogGrid from '../components/blog/BlogGrid';
-import MyPortableText from '../components/MyPortableText';
-import PageHeader from '../components/PageHeader';
-import PageSpace from '../components/PageSpace';
-import SEO from '../components/seo';
-import { SingleCategoryStyles } from '../styles/category/SingleCategoryStyles';
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import BlogGrid from "../components/blog/BlogGrid";
+import MyPortableText from "../components/MyPortableText";
+import PageHeader from "../components/PageHeader";
+import PageSpace from "../components/PageSpace";
+import SEO from "../components/seo";
+import { SingleCategoryStyles } from "../styles/category/SingleCategoryStyles";
 
 /// category id parameter is being dynamically accessed from context in gatsby-node
 export const query = graphql`
@@ -54,7 +54,7 @@ function SingleCategory({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`DEMT-${category.title}`} />
+          <SEO title={`Diginotive-${category.title}`} />
           <PageHeader title={category.title} className="pageHeader">
             <MyPortableText value={category._rawDescription} />
             <GatsbyImage

@@ -12,14 +12,15 @@ function HeroSection() {
         <div className="hero__wrapper">
           <div className="left">
             <h1 className="hero__heading">
-              Empowering sustainability through grassroots-driven
-              environmentally friendly intervention methods
+              Empowering Every Zimbabwean with the Intelligence of Tomorrow
             </h1>
             <ParagraphText className="hero__text">
-              We proactively leverage cutting edge solutions & collective effort
-              to compliment and augment the capacity of vulnerable rural
-              populations to envision and construct a resilient, environmentally
-              sustainable future, one community at a time.
+              "Diginotive Solutions (Private) Limited is a Zimbabwe-based
+              Research and Development company specialising in ICT, educational
+              technology, and AI content development. We empower businesses and
+              organisations through innovative problem-solving rooted in
+              thorough research and custom technological solutions tailored to
+              the African context."
             </ParagraphText>
             <Button to="/spotlight" tag={Link} className="hero__button">
               Explore Our Latest Work
@@ -28,8 +29,8 @@ function HeroSection() {
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/demtMalnutrition.jpg"
-              alt="DEMT hero image"
+              src="../../images/DiginotiveMalnutrition.jpg"
+              alt="Diginotive hero image"
               placeholder="blurred"
               objectPosition="50% 30%"
             />

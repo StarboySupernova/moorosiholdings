@@ -1,12 +1,12 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { TopCategoriesStyles } from '../../styles/homePage/TopCategoriesStyles';
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import { TopCategoriesStyles } from "../../styles/homePage/TopCategoriesStyles";
 // import CategoryGrid from '../category/CategoryGrid';
-import ActivityGrid from '../category/ActivityGrid';
-import ParagraphText from '../typography/ParagraphText';
-import { SectionTitle } from '../typography/Title';
-import ValueGrid from '../category/ValueGrid';
-import ObjectiveGrid from '../category/ObjectiveGrid';
+import ActivityGrid from "../category/ActivityGrid";
+import ParagraphText from "../typography/ParagraphText";
+import { SectionTitle } from "../typography/Title";
+import ValueGrid from "../category/ValueGrid";
+import ObjectiveGrid from "../category/ObjectiveGrid";
 
 function TopCategories() {
   const data = useStaticQuery(graphql`
@@ -39,7 +39,7 @@ function TopCategories() {
   `);
   const activities = data.allSanitySpotlight.nodes[0].activity;
   const objectives = data.allSanityObjective.nodes;
-  const demtValues = data.allSanityValue.nodes;
+  const DiginotiveValues = data.allSanityValue.nodes;
   return (
     <TopCategoriesStyles>
       <SectionTitle className="centre__text">Vision</SectionTitle>
@@ -53,7 +53,7 @@ function TopCategories() {
         anthropogenic shocks and hazards.
       </ParagraphText>
       <SectionTitle className="centre__text">Our Values</SectionTitle>
-      <ValueGrid demtValues={demtValues} />
+      <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
       <SectionTitle>Core Initiatives</SectionTitle>

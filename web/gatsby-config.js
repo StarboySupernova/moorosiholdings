@@ -1,11 +1,11 @@
-require('dotenv').config('./.env');
-const sanityConfig = require('./sanity-config.js');
+require("dotenv").config("./.env");
+const sanityConfig = require("./sanity-config.js");
 
 module.exports = {
   siteMetadata: {
-    title: `DEMT`,
-    siteUrl: `https://demt.netlify.com`,
-    description: `DEMT`,
+    title: `Diginotive`,
+    siteUrl: `https://diginotive.netlify.com`,
+    description: `Diginotive`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,13 +13,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-source-sanity',
+      resolve: "gatsby-source-sanity",
       options: {
         ...sanityConfig,
       },
     },
     {
-      resolve: 'gatsby-plugin-styled-components',
+      resolve: "gatsby-plugin-styled-components",
     },
     {
       resolve: `gatsby-plugin-local-search`,
@@ -27,7 +27,7 @@ module.exports = {
         name: `blogs`,
         engine: `flexsearch`,
         engineOptions: {
-          tokenize: 'forward',
+          tokenize: "forward",
         },
         query: `
         {
@@ -52,9 +52,9 @@ module.exports = {
         `,
         /* ref, index et. al. is to let the plugin know the result of the graphql query, and also specifieis for it what result we expect from the query */
         /* data is the result of the query */
-        ref: 'id',
-        index: ['title'],
-        store: ['id', 'title', 'publishedAt', 'slug', 'coverImage'],
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title", "publishedAt", "slug", "coverImage"],
         normalizer: ({ data }) =>
           data.allSanityBlog.nodes.map((node) => ({
             id: node.id,
@@ -71,7 +71,7 @@ module.exports = {
         name: `categories`,
         engine: `flexsearch`,
         engineOptions: {
-          tokenize: 'forward',
+          tokenize: "forward",
         },
         query: `
         {
@@ -86,9 +86,9 @@ module.exports = {
           }
         } 
         `,
-        ref: 'id',
-        index: ['title'],
-        store: ['id', 'title', 'slug'],
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title", "slug"],
         normalizer: ({ data }) =>
           data.allSanityCategory.nodes.map((node) => ({
             id: node.id,
@@ -103,7 +103,7 @@ module.exports = {
         name: `activities`,
         engine: `flexsearch`,
         engineOptions: {
-          tokenize: 'forward',
+          tokenize: "forward",
         },
         query: `
         {
@@ -118,9 +118,9 @@ module.exports = {
           }
         } 
         `,
-        ref: 'id',
-        index: ['title'],
-        store: ['id', 'title', 'slug'],
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title", "slug"],
         normalizer: ({ data }) =>
           data.allSanityActivity.nodes.map((node) => ({
             id: node.id,
@@ -135,7 +135,7 @@ module.exports = {
         name: `authors`,
         engine: `flexsearch`,
         engineOptions: {
-          tokenize: 'forward',
+          tokenize: "forward",
         },
         query: `
         {
@@ -156,9 +156,9 @@ module.exports = {
           }
         } 
         `,
-        ref: 'id',
-        index: ['name'],
-        store: ['id', 'name', 'slug', 'profileImage'],
+        ref: "id",
+        index: ["name"],
+        store: ["id", "name", "slug", "profileImage"],
         normalizer: ({ data }) =>
           data.allSanityAuthor.nodes.map((node) => ({
             id: node.id,

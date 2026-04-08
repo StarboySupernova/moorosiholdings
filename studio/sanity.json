@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "0wfqubi4",
+    "projectId": "lneqhxau",
     "dataset": "production"
   },
   "project": {
-    "name": "DEMT"
+    "name": "Diginotive"
   },
   "plugins": [
     "@sanity/base",
@@ -16,9 +16,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

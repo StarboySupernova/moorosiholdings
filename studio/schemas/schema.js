@@ -4,27 +4,29 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 /* eslint-enable */
 
 // import document schemas/
-import blog from './documents/blog';
-import category from './documents/category';
-import author from './documents/author';
-import activity from './documents/activity';
-import spotlight from './documents/spotlight';
-import objective from './documents/objective';
-import value from './documents/value';
+import blog from "./documents/blog";
+import category from "./documents/category";
+import author from "./documents/author";
+import service from "./documents/service";
+import publication from "./documents/publication";
+import spotlight from "./documents/spotlight";
+import objective from "./documents/objective";
+import value from "./documents/value";
 
 // import object
-import richText from './objects/richText';
-import normalText from './objects/normalText';
-import customImage from './objects/customImage';
+import richText from "./objects/richText";
+import normalText from "./objects/normalText";
+import customImage from "./objects/customImage";
 
 export default createSchema({
-  name: 'default',
+  name: "default",
   types: schemaTypes.concat([
     // document schemas
     blog,
     category,
     author,
-    activity,
+    service,
+    publication,
     spotlight,
     objective,
     value,

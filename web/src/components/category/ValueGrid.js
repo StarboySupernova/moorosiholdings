@@ -1,11 +1,11 @@
-import React from 'react';
-import { ValueGridStyles } from '../../styles/category/CategoryGridStyles';
-import ValueItem from './ValueItem';
+import React from "react";
+import { ValueGridStyles } from "../../styles/category/CategoryGridStyles";
+import ValueItem from "./ValueItem";
 
-function ValueGrid({ demtValues }) {
+function ValueGrid({ DiginotiveValues }) {
   return (
     <ValueGridStyles>
-      {demtValues.map((item) => (
+      {DiginotiveValues.map((item) => (
         <ValueItem key={item.id} description={item._rawDescription} />
       ))}
     </ValueGridStyles>
