@@ -1,9 +1,9 @@
-import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
-import { Link } from 'gatsby';
-import { HeroSectionStyles } from '../../styles/homePage/HeroSectionStyles';
-import ParagraphText from '../typography/ParagraphText';
-import Button from '../buttons/Button';
+import React from "react";
+import { StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { HeroSectionStyles } from "../../styles/homePage/HeroSectionStyles";
+import ParagraphText from "../typography/ParagraphText";
+import Button from "../buttons/Button";
 
 function HeroSection() {
   return (
@@ -29,7 +29,7 @@ function HeroSection() {
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/DiginotiveMalnutrition.jpg"
+              src="../../images/demtMalnutrition.jpg"
               alt="Diginotive hero image"
               placeholder="blurred"
               objectPosition="50% 30%"
