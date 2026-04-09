@@ -1,11 +1,11 @@
 # Project Overview
 
 ## Project Summary
-- Total Files (tracked): 111
+- Total Files (tracked): 112
 
 ### Language Breakdown
-- JavaScript: 97 files (87.4%)
-- JSON: 12 files (10.8%)
+- JavaScript: 98 files (87.5%)
+- JSON: 12 files (10.7%)
 - Markdown: 2 files (1.8%)
 
 ## Project Structure
@@ -26,11 +26,12 @@
 │   │   └── 📄 .gitkeep
 │   ├── 📁 schemas
 │   │   ├── 📁 documents
-│   │   │   ├── 🟨 activity.js
 │   │   │   ├── 🟨 author.js
 │   │   │   ├── 🟨 blog.js
 │   │   │   ├── 🟨 category.js
 │   │   │   ├── 🟨 objective.js
+│   │   │   ├── 🟨 publication.js
+│   │   │   ├── 🟨 service.js
 │   │   │   ├── 🟨 spotlight.js
 │   │   │   └── 🟨 value.js
 │   │   ├── 📁 objects
@@ -189,6 +190,56 @@ module.exports = {
     'react/jsx-pascal-case': 'error',
   },
 };
+
+```
+## `README.md`
+```
+![Mwenje-Geology](./mwenje.png)
+
+# Mwenje Geology. By Christian Simbarashe Dombodzvuku
+
+A complete full-stack web-app created with `JAMstack`. ([Gatsby.js](https://www.gatsbyjs.org/) & [Sanity.io](https://sanity.io)).
+
+<a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 45px !important;width: 162.75px !important;" ></a>
+
+---
+
+## Project Details
+
+`Gatsby.js` was used for the frontend and `Sanity.io` for the headless CMS, with `graphql` used to source content
+
+- [React.js](https://reactjs.org/)
+- [Gatsby.js](https://www.gatsbyjs.org/)
+  - [Gatsby-plugin-image](https://www.gatsbyjs.org/packages/gatsby-plugin-image/)
+    - Static Image & Gatsby Image
+  - Gatsby Page
+    - Normal Pages
+    - programmatically created pages
+  - Gatsby Pagination
+  - [Gatsby-plugin-local-search](https://www.gatsbyjs.org/packages/gatsby-plugin-local-search/)
+  - [GraphQL](https://graphql.org/)
+    - Static Query & Page Query
+- [Sanity.io](https://sanity.io/)
+  - Sanity Schema
+  - Custom Blocks
+    - Custom Rich-text Block
+    - Custom Code Block
+  - Studio Customization
+- [React-PortableText](https://github.com/portabletext/react-portabletext)
+- [Axios](https://www.npmjs.com/package/axios)
+
+## Tools Used
+
+- UI Design: Figma
+- Code Editor: VS Code
+
+## License
+
+[MIT][mit]
+
+✨🚀
+
+[mit]: https://choosealicense.com/licenses/mit/
 
 ```
 ## `generate_structure.js`
@@ -885,56 +936,6 @@ function printTree(dir, prefix = "", stream) {
 }
 
 ```
-## `README.md`
-```
-![Mwenje-Geology](./mwenje.png)
-
-# Mwenje Geology. By Christian Simbarashe Dombodzvuku
-
-A complete full-stack web-app created with `JAMstack`. ([Gatsby.js](https://www.gatsbyjs.org/) & [Sanity.io](https://sanity.io)).
-
-<a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 45px !important;width: 162.75px !important;" ></a>
-
----
-
-## Project Details
-
-`Gatsby.js` was used for the frontend and `Sanity.io` for the headless CMS, with `graphql` used to source content
-
-- [React.js](https://reactjs.org/)
-- [Gatsby.js](https://www.gatsbyjs.org/)
-  - [Gatsby-plugin-image](https://www.gatsbyjs.org/packages/gatsby-plugin-image/)
-    - Static Image & Gatsby Image
-  - Gatsby Page
-    - Normal Pages
-    - programmatically created pages
-  - Gatsby Pagination
-  - [Gatsby-plugin-local-search](https://www.gatsbyjs.org/packages/gatsby-plugin-local-search/)
-  - [GraphQL](https://graphql.org/)
-    - Static Query & Page Query
-- [Sanity.io](https://sanity.io/)
-  - Sanity Schema
-  - Custom Blocks
-    - Custom Rich-text Block
-    - Custom Code Block
-  - Studio Customization
-- [React-PortableText](https://github.com/portabletext/react-portabletext)
-- [Axios](https://www.npmjs.com/package/axios)
-
-## Tools Used
-
-- UI Design: Figma
-- Code Editor: VS Code
-
-## License
-
-[MIT][mit]
-
-✨🚀
-
-[mit]: https://choosealicense.com/licenses/mit/
-
-```
 ## `studio\components\SidebarList.js`
 ```
 import S from "@sanity/desk-tool/structure-builder";
@@ -1446,64 +1447,6 @@ export default SidebarList;
 }
 
 ```
-## `studio\schemas\documents\activity.js`
-```
-import { FcApproval } from 'react-icons/fc';
-
-export default {
-  name: 'activity',
-  title: 'Activity',
-  type: 'document',
-  icon: FcApproval,
-  fields: [
-    {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Tag',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
-    {
-      name: 'coverImage',
-      title: 'Cover Image',
-      type: 'customImage',
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'normalText',
-    },
-    {
-      title: 'Category',
-      name: 'category',
-      type: 'reference',
-      to: [{ type: 'category' }],
-    },
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      image: 'coverImage',
-      slug: 'slug',
-    },
-    prepare({ title, image, slug }) {
-      return {
-        title,
-        media: image,
-        subtitle: slug.current,
-      };
-    },
-  },
-};
-
-```
 ## `studio\schemas\documents\author.js`
 ```
 import { FcBusinessman } from 'react-icons/fc';
@@ -1728,49 +1671,118 @@ export default {
 };
 
 ```
-## `studio\schemas\documents\spotlight.js`
+## `studio\schemas\documents\publication.js`
 ```
-import { FcRating } from 'react-icons/fc';
+// studio/schemas/documents/publication.js
+import { FcLibrary } from 'react-icons/fc';
 
 export default {
-  name: 'spotlight',
-  title: 'Featured',
+  name: 'publication',
+  title: 'Publication & Books',
   type: 'document',
+  icon: FcLibrary,
+  fields: [
+    { name: 'title', title: 'Book/Series Title', type: 'string' },
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
+    {
+      name: 'author',
+      title: 'Author/Team',
+      type: 'reference',
+      to: [{ type: 'author' }],
+    },
+    { name: 'coverImage', title: 'Book Cover', type: 'customImage' },
+    {
+      name: 'targetAudience',
+      title: 'Target Audience',
+      type: 'string',
+      description: 'e.g., Policymakers, Primary Students, General Public',
+    },
+    { name: 'description', title: 'Synopsis', type: 'richText' },
+  ],
+};
+
+```
+## `studio\schemas\documents\service.js`
+```
+import { FcServices } from 'react-icons/fc';
+
+export default {
+  name: 'activity', // Keeping 'activity' prevents breaking existing Gatsby GraphQL queries
+  title: 'Service / R&D Pillar', // Changes how it looks in Sanity Studio
+  type: 'document',
+  icon: FcServices,
+  fields: [
+    { name: 'title', title: 'Service Name', type: 'string' },
+    {
+      name: 'slug',
+      title: 'URL Slug',
+      type: 'slug',
+      options: { source: 'title', maxLength: 96 },
+    },
+    { name: 'coverImage', title: 'Cover Image', type: 'customImage' },
+    { name: 'description', title: 'Short Description', type: 'normalText' },
+    { name: 'body', title: 'Full Service Details', type: 'richText' }, // Added richText for deep dives
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      image: 'coverImage',
+      slug: 'slug',
+    },
+    prepare({ title, image, slug }) {
+      return {
+        title,
+        media: image,
+        subtitle: slug.current,
+      };
+    },
+  },
+};
+
+```
+## `studio\schemas\documents\spotlight.js`
+```
+import { FcRating } from "react-icons/fc";
+
+export default {
+  name: "spotlight",
+  title: "Spotlight",
+  type: "document",
   icon: FcRating,
   fields: [
     {
-      title: 'Title',
-      name: 'title',
-      type: 'string',
+      title: "Title",
+      name: "title",
+      type: "string",
     },
     {
-      name: 'blogs',
-      title: 'Upcoming News, Updates & Events',
-      type: 'array',
+      name: "blogs",
+      title: "Featured Publications & News",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'blog' }],
+          type: "reference",
+          to: [{ type: "blog" }, { type: "publication" }],
         },
       ],
       validation: (Rule) => [
-        Rule.error('Every entry should be unique').unique(),
-        Rule.required().error('At least one entry is required'),
+        Rule.error("Every entry should be unique").unique(),
+        Rule.required().error("At least one entry is required"),
       ],
     },
     {
-      name: 'activity',
-      title: 'Core Initiatives',
-      type: 'array',
+      name: "activity",
+      title: "Core R&D Services",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'activity' }],
+          type: "reference",
+          to: [{ type: "activity" }],
         },
       ],
       validation: (Rule) => [
-        Rule.error('Every Item should be unique').unique(),
-        Rule.required().error('At least one item is required'),
+        Rule.error("Every Item should be unique").unique(),
+        Rule.required().error("At least one item is required"),
       ],
     },
   ],
@@ -1938,27 +1950,29 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 /* eslint-enable */
 
 // import document schemas/
-import blog from './documents/blog';
-import category from './documents/category';
-import author from './documents/author';
-import activity from './documents/activity';
-import spotlight from './documents/spotlight';
-import objective from './documents/objective';
-import value from './documents/value';
+import blog from "./documents/blog";
+import category from "./documents/category";
+import author from "./documents/author";
+import service from "./documents/service";
+import publication from "./documents/publication";
+import spotlight from "./documents/spotlight";
+import objective from "./documents/objective";
+import value from "./documents/value";
 
 // import object
-import richText from './objects/richText';
-import normalText from './objects/normalText';
-import customImage from './objects/customImage';
+import richText from "./objects/richText";
+import normalText from "./objects/normalText";
+import customImage from "./objects/customImage";
 
 export default createSchema({
-  name: 'default',
+  name: "default",
   types: schemaTypes.concat([
     // document schemas
     blog,
     category,
     author,
-    activity,
+    service,
+    publication,
     spotlight,
     objective,
     value,
@@ -1986,6 +2000,17 @@ export default createSchema({
 module.exports = {
   rules: {},
 };
+
+```
+## `web\README.md`
+```
+## z-index:
+
+- Header: 1000
+- Mobile Menu
+  - Menu: 1002
+  - MenuBg: 1001
+- SearchModal: 2000
 
 ```
 ## `web\gatsby-browser.js`
@@ -2781,19 +2806,12 @@ export const wrapPageElement = ({ element, props }) => (
   },
   "devDependencies": {
     "dotenv": "^16.0.0"
+  },
+  "overrides": {
+    "msgpackr": "^1.10.2",
+    "lmdb": "^2.8.5"
   }
 }
-
-```
-## `web\README.md`
-```
-## z-index:
-
-- Header: 1000
-- Mobile Menu
-  - Menu: 1002
-  - MenuBg: 1001
-- SearchModal: 2000
 
 ```
 ## `web\sanity-config.js`
@@ -2802,6 +2820,472 @@ module.exports = {
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
   dataset: process.env.GATSBY_SANITY_DATASET,
 };
+
+```
+## `web\src\components\ConstrainedPortableText.js`
+```
+import { PortableText } from '@portabletext/react';
+import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import theme from 'react-syntax-highlighter/dist/esm/styles/prism/vs-dark';
+import { getImage, getImageDimensions } from '@sanity/asset-utils';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import ParagraphText from './typography/ParagraphText';
+import { Title } from './typography/Title';
+import sanityConfig from '../../sanity-config';
+import { getSanityImageData } from '../utils/getSanityImageData';
+import { CustomImageStyles } from '../styles/CustomImageStyles';
+
+const constrainedPortableTextComponents = {
+  block: {
+    normal: ({ children }) => {
+      // Check if children is not null and is an object
+      if (!children || typeof children !== 'object') {
+        // Handle the case where children is not an object or is null, for example, render an empty block
+        return null;
+      }
+
+      // Extract text content from JSON structure
+      const extractTextContent = (data) => {
+        if (Array.isArray(data)) {
+          return data.map((item) => extractTextContent(item)).join(' ');
+        }
+        if (typeof data === 'object' && data !== null) {
+          // Filter out keys that correspond to node names
+          const filteredValues = Object.values(data).filter(
+            (value) =>
+              typeof value === 'object' && value !== null && '_type' in value
+          );
+          return filteredValues
+            .map((value) => extractTextContent(value))
+            .join(' ');
+        }
+        if (typeof data === 'string') {
+          return data;
+        }
+        return '';
+      };
+
+      // Extract text content from children
+      const fullText = extractTextContent(children);
+
+      // Check if the number of characters exceeds the limit
+      if (fullText.length > 250) {
+        // Slice the text to get the first 250 characters and add an ellipsis
+        const truncatedText = `${fullText.slice(0, 250)} ...`;
+
+        // Render the truncated text
+        return <ParagraphText>{truncatedText}</ParagraphText>;
+      }
+
+      // If the number of characters is within the limit, render the full text
+      return <ParagraphText>{fullText}</ParagraphText>;
+    },
+    h1: ({ children }) => <Title>{children}</Title>,
+  },
+  marks: {
+    code: ({ children }) => (
+      <SyntaxHighlighter style={theme} className="bodyCode">
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ),
+  },
+  types: {
+    customCode: ({ value }) => (
+      <SyntaxHighlighter
+        style={theme}
+        language={value.code.language}
+        className="bodyCode"
+      >
+        {String(value.code.code).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ),
+    customImage: ({ value }) => {
+      const imageData = getImage(value.asset, sanityConfig).asset;
+      const { width, height } = getImageDimensions(value);
+
+      const image = {
+        url: imageData.url,
+        width,
+        height,
+      };
+
+      const gatsbyImageData = getSanityImageData({
+        image,
+        layout: 'constrained',
+      });
+
+      return (
+        <CustomImageStyles>
+          <GatsbyImage
+            image={gatsbyImageData}
+            alt={value.alt}
+            className="bodyImage custom-image"
+          />
+        </CustomImageStyles>
+      );
+    },
+  },
+};
+
+function ConstrainedPortableText({ value }) {
+  return (
+    <PortableText
+      value={value}
+      components={constrainedPortableTextComponents}
+    />
+  );
+}
+
+export default ConstrainedPortableText;
+
+```
+## `web\src\components\Footer.js`
+```
+import { Link } from "gatsby";
+import React from "react";
+import { menu } from "../constants/menu";
+import { socialLinks } from "../constants/socialLinks";
+import { FooterStyles } from "../styles/FooterStyles";
+import Logo from "./Logo";
+import ParagraphText from "./typography/ParagraphText";
+
+function Footer() {
+  return (
+    <FooterStyles>
+      <div className="container">
+        <Logo />
+        <ParagraphText className="footer__text">
+          "Diginotive Solutions (Private) Limited is a Zimbabwe-based Research
+          and Development company specialising in ICT, educational technology,
+          and AI content development. We empower businesses and organisations
+          through innovative problem-solving rooted in thorough research and
+          custom technological solutions tailored to the African context."
+        </ParagraphText>
+        <ul className="footer__menuList">
+          {menu.map((item) => (
+            <li key={item.path}>
+              <Link to={item.path}>{item.title}</Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="footer__socialList">
+          {socialLinks.map((item) => (
+            <li key={item.name}>
+              <a href={item.url}>{item.icon}</a>
+            </li>
+          ))}
+        </ul>
+        <ParagraphText className="copyright">
+          P.O. Box 42, Mutoko Rural District, Zimbabwe
+        </ParagraphText>
+        <ParagraphText className="copyright">
+          © Diginotive | EST. 2019 | {new Date().getFullYear()} | All rights
+          reserved
+        </ParagraphText>
+      </div>
+    </FooterStyles>
+  );
+}
+
+export default Footer;
+
+```
+## `web\src\components\Header.js`
+```
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'gatsby';
+import clsx from 'clsx';
+import { MdClose, MdMenu, MdSearch } from 'react-icons/md';
+import HeaderStyles from '../styles/HeaderStyles';
+import Logo from './Logo';
+import ActionButton from './buttons/ActionButton';
+import { menu } from '../constants/menu';
+import { SearchModalContext } from '../contexts/searchModalContext';
+
+function Header() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const { openSearchModal } = useContext(SearchModalContext);
+
+  useEffect(() => {
+    if (isNavOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'initial';
+    }
+  }, [isNavOpen]);
+
+  const handleSearchModalOpen = () => {
+    openSearchModal();
+  };
+
+  const handleNavItemClick = () => {
+    if (isNavOpen) {
+      setIsNavOpen(false);
+    }
+  };
+
+  return (
+    <HeaderStyles>
+      <div className="container">
+        <div className="header__container">
+          <div className="logo">
+            <Logo />
+          </div>
+          <div className={clsx('nav__wrapper', isNavOpen && 'open')}>
+            <div className="mobileIcon">
+              <div className="searchIcon">
+                <div
+                  className="searchIcon__wrapper"
+                  onClick={handleSearchModalOpen}
+                  onKeyDown={handleSearchModalOpen}
+                  tabIndex={0}
+                  role="button"
+                >
+                  <MdSearch />
+                </div>
+              </div>
+              <ActionButton
+                className="mobileMenuBtn"
+                onKeyDown={() => setIsNavOpen(true)}
+                onClick={() => setIsNavOpen(true)}
+              >
+                <MdMenu />
+              </ActionButton>
+            </div>
+            {/* functionality to close menu upon clicking outside nav menu in mobile */}
+            {isNavOpen && (
+              <div
+                aria-label="Close Menu"
+                role="button"
+                tabIndex={0}
+                className="mobileNavBg"
+                onKeyDown={() => setIsNavOpen(false)}
+                onClick={() => setIsNavOpen(false)}
+              />
+            )}
+            <nav>
+              <ActionButton
+                className="mobileMenuCloseBtn"
+                onClick={() => setIsNavOpen(false)}
+                onKeyDown={() => setIsNavOpen(false)}
+              >
+                <MdClose />
+              </ActionButton>
+              <ul>
+                {menu.map((item) => (
+                  <li key={item.path}>
+                    <Link to={item.path} onClick={handleNavItemClick}>
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+                <li className="searchIcon">
+                  <div
+                    className="searchIcon__wrapper"
+                    onClick={handleSearchModalOpen}
+                    onKeyDown={handleSearchModalOpen}
+                    tabIndex={0}
+                    role="button"
+                  >
+                    <MdSearch />
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </HeaderStyles>
+  );
+}
+
+export default Header;
+
+```
+## `web\src\components\Layout.js`
+```
+import React from 'react';
+import Header from './Header';
+import GlobalStyles from '../styles/GlobalStyles';
+import 'normalize.css/normalize.css';
+import Footer from './Footer';
+import Search from './search/SearchModal';
+import { SearchModalContextProvider } from '../contexts/searchModalContext';
+
+function Layout({ children }) {
+  return (
+    <SearchModalContextProvider>
+      <GlobalStyles />
+      <Search /> {/* adding it to the component tree for it to work */}
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </SearchModalContextProvider>
+  );
+}
+
+export default Layout;
+
+```
+## `web\src\components\Logo.js`
+```
+import React from 'react';
+// import { GrTechnology } from 'react-icons/gr';
+import { StaticImage } from 'gatsby-plugin-image';
+import LogoStyles from '../styles/LogoStyles';
+
+function Logo() {
+  const width = 50;
+  const height = 50;
+  return (
+    <LogoStyles to="/">
+      <StaticImage src="../images/mwenje.jpg" width={width} height={height} />
+    </LogoStyles>
+  );
+}
+
+export default Logo;
+
+```
+## `web\src\components\MyPortableText.js`
+```
+import { PortableText } from '@portabletext/react';
+import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import theme from 'react-syntax-highlighter/dist/esm/styles/prism/vs-dark';
+import { getImage, getImageDimensions } from '@sanity/asset-utils';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import ParagraphText from './typography/ParagraphText';
+import { Title } from './typography/Title';
+import sanityConfig from '../../sanity-config';
+import { getSanityImageData } from '../utils/getSanityImageData';
+import { CustomImageStyles } from '../styles/CustomImageStyles';
+
+const myPortableTextComponents = {
+  block: {
+    normal: ({ children }) => <ParagraphText>{children}</ParagraphText>,
+    h1: ({ children }) => <Title>{children}</Title>,
+  },
+  marks: {
+    code: ({ children }) => (
+      <SyntaxHighlighter style={theme} className="bodyCode">
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ),
+  },
+  types: {
+    customImage: ({ value }) => {
+      const imageData = getImage(value.asset, sanityConfig).asset;
+      const { width, height } = getImageDimensions(value);
+
+      const image = {
+        url: imageData.url,
+        width,
+        height,
+      };
+
+      const gatsbyImageData = getSanityImageData({
+        image,
+        layout: 'constrained',
+      });
+
+      return (
+        <CustomImageStyles>
+          <GatsbyImage
+            image={gatsbyImageData}
+            alt={value.alt}
+            className="bodyImage custom-image"
+          />
+        </CustomImageStyles>
+      );
+    },
+  },
+};
+
+function MyPortableText({ value }) {
+  return <PortableText value={value} components={myPortableTextComponents} />;
+}
+
+export default MyPortableText;
+
+```
+## `web\src\components\PageHeader.js`
+```
+import React from 'react';
+import { PageHeaderStyles } from '../styles/PageHeaderStyles';
+import ParagraphText from './typography/ParagraphText';
+import { SectionTitle } from './typography/Title';
+
+function PageHeader({ title, description, children, className }) {
+  return (
+    <div className={className}>
+      <PageHeaderStyles>
+        <SectionTitle>{title}</SectionTitle>
+        <ParagraphText>{description}</ParagraphText>
+        {children}
+      </PageHeaderStyles>
+    </div>
+  );
+}
+
+export default PageHeader;
+
+```
+## `web\src\components\PageSpace.js`
+```
+import React from 'react';
+import { PageSpaceStyles } from '../styles/PageSpaceStyles';
+
+function PageSpace({ top, bottom, children }) {
+  return (
+    <PageSpaceStyles top={top} bottom={bottom}>
+      {children}
+    </PageSpaceStyles>
+  );
+}
+
+export default PageSpace;
+
+```
+## `web\src\components\Pagination.js`
+```
+import React from 'react';
+import { Link } from 'gatsby';
+import clsx from 'clsx';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { PaginationStyles } from '../styles/PaginationStyles';
+import ParagraphText from './typography/ParagraphText';
+
+function Pagination({ baseURL, numberOfPages, currentPage }) {
+  const prevPage = currentPage - 1 <= 1 ? '' : (currentPage - 1).toString();
+  const nextPage = (currentPage + 1).toString();
+  return (
+    <div className="container">
+      <PaginationStyles>
+        <div className="icons">
+          <Link
+            to={`${baseURL}/${prevPage}`}
+            className={clsx(currentPage <= 1 && 'disabled')}
+          >
+            <FiChevronLeft /> Prev
+          </Link>
+          <Link
+            to={`${baseURL}/${nextPage}`}
+            className={clsx(currentPage >= numberOfPages && 'disabled')}
+          >
+            Next <FiChevronRight />
+          </Link>
+        </div>
+        <ParagraphText>
+          page {currentPage} of {numberOfPages} pages
+        </ParagraphText>
+      </PaginationStyles>
+    </div>
+  );
+}
+
+export default Pagination;
 
 ```
 ## `web\src\components\author\AuthorGrid.js`
@@ -2830,19 +3314,21 @@ export default AuthorGrid;
 ```
 ## `web\src\components\author\AuthorItem.js`
 ```
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { AuthorItemStyles } from '../../styles/author/AuthorItemStyles';
-import { Title } from '../typography/Title';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { AuthorItemStyles } from "../../styles/author/AuthorItemStyles";
+import { Title } from "../typography/Title";
 
 function AuthorItem({ name, slug, profileImage }) {
   return (
     <AuthorItemStyles className="author-item" to={slug.current}>
-      <GatsbyImage
-        image={profileImage.asset.gatsbyImageData}
-        alt={profileImage.alt}
-        className="profileImage"
-      />
+      {profileImage && (
+        <GatsbyImage
+          image={profileImage.asset.gatsbyImageData}
+          alt={profileImage.alt || name}
+          className="profileImage"
+        />
+      )}
       <Title>{name}</Title>
     </AuthorItemStyles>
   );
@@ -3140,299 +3626,14 @@ function ValueItem({ description }) {
 export default ValueItem;
 
 ```
-## `web\src\components\ConstrainedPortableText.js`
-```
-import { PortableText } from '@portabletext/react';
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import theme from 'react-syntax-highlighter/dist/esm/styles/prism/vs-dark';
-import { getImage, getImageDimensions } from '@sanity/asset-utils';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import ParagraphText from './typography/ParagraphText';
-import { Title } from './typography/Title';
-import sanityConfig from '../../sanity-config';
-import { getSanityImageData } from '../utils/getSanityImageData';
-import { CustomImageStyles } from '../styles/CustomImageStyles';
-
-const constrainedPortableTextComponents = {
-  block: {
-    normal: ({ children }) => {
-      // Check if children is not null and is an object
-      if (!children || typeof children !== 'object') {
-        // Handle the case where children is not an object or is null, for example, render an empty block
-        return null;
-      }
-
-      // Extract text content from JSON structure
-      const extractTextContent = (data) => {
-        if (Array.isArray(data)) {
-          return data.map((item) => extractTextContent(item)).join(' ');
-        }
-        if (typeof data === 'object' && data !== null) {
-          // Filter out keys that correspond to node names
-          const filteredValues = Object.values(data).filter(
-            (value) =>
-              typeof value === 'object' && value !== null && '_type' in value
-          );
-          return filteredValues
-            .map((value) => extractTextContent(value))
-            .join(' ');
-        }
-        if (typeof data === 'string') {
-          return data;
-        }
-        return '';
-      };
-
-      // Extract text content from children
-      const fullText = extractTextContent(children);
-
-      // Check if the number of characters exceeds the limit
-      if (fullText.length > 250) {
-        // Slice the text to get the first 250 characters and add an ellipsis
-        const truncatedText = `${fullText.slice(0, 250)} ...`;
-
-        // Render the truncated text
-        return <ParagraphText>{truncatedText}</ParagraphText>;
-      }
-
-      // If the number of characters is within the limit, render the full text
-      return <ParagraphText>{fullText}</ParagraphText>;
-    },
-    h1: ({ children }) => <Title>{children}</Title>,
-  },
-  marks: {
-    code: ({ children }) => (
-      <SyntaxHighlighter style={theme} className="bodyCode">
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ),
-  },
-  types: {
-    customCode: ({ value }) => (
-      <SyntaxHighlighter
-        style={theme}
-        language={value.code.language}
-        className="bodyCode"
-      >
-        {String(value.code.code).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ),
-    customImage: ({ value }) => {
-      const imageData = getImage(value.asset, sanityConfig).asset;
-      const { width, height } = getImageDimensions(value);
-
-      const image = {
-        url: imageData.url,
-        width,
-        height,
-      };
-
-      const gatsbyImageData = getSanityImageData({
-        image,
-        layout: 'constrained',
-      });
-
-      return (
-        <CustomImageStyles>
-          <GatsbyImage
-            image={gatsbyImageData}
-            alt={value.alt}
-            className="bodyImage custom-image"
-          />
-        </CustomImageStyles>
-      );
-    },
-  },
-};
-
-function ConstrainedPortableText({ value }) {
-  return (
-    <PortableText
-      value={value}
-      components={constrainedPortableTextComponents}
-    />
-  );
-}
-
-export default ConstrainedPortableText;
-
-```
-## `web\src\components\Footer.js`
-```
-import { Link } from "gatsby";
-import React from "react";
-import { menu } from "../constants/menu";
-import { socialLinks } from "../constants/socialLinks";
-import { FooterStyles } from "../styles/FooterStyles";
-import Logo from "./Logo";
-import ParagraphText from "./typography/ParagraphText";
-
-function Footer() {
-  return (
-    <FooterStyles>
-      <div className="container">
-        <Logo />
-        <ParagraphText className="footer__text">
-          "At Disaster Environmental Management Trust (Diginotive), our mission
-          is to protect communities and ecosystems in the face of environmental
-          challenges. We are dedicated to developing innovative solutions for
-          disaster response, environmental conservation, and sustainable
-          recovery. Through collaborative efforts, and grass roots community
-          engagement, we work tirelessly to mitigate environmental risks and
-          support resilient communities. Join us in our commitment to creating a
-          safer, more sustainable future. Together, we can make a meaningful
-          difference in environmental management and disaster preparedness."
-        </ParagraphText>
-        <ul className="footer__menuList">
-          {menu.map((item) => (
-            <li key={item.path}>
-              <Link to={item.path}>{item.title}</Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="footer__socialList">
-          {socialLinks.map((item) => (
-            <li key={item.name}>
-              <a href={item.url}>{item.icon}</a>
-            </li>
-          ))}
-        </ul>
-        <ParagraphText className="copyright">
-          P.O. Box 42, Mutoko Rural District, Zimbabwe
-        </ParagraphText>
-        <ParagraphText className="copyright">
-          © Diginotive | EST. 2019 | {new Date().getFullYear()} | All rights
-          reserved
-        </ParagraphText>
-      </div>
-    </FooterStyles>
-  );
-}
-
-export default Footer;
-
-```
-## `web\src\components\Header.js`
-```
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'gatsby';
-import clsx from 'clsx';
-import { MdClose, MdMenu, MdSearch } from 'react-icons/md';
-import HeaderStyles from '../styles/HeaderStyles';
-import Logo from './Logo';
-import ActionButton from './buttons/ActionButton';
-import { menu } from '../constants/menu';
-import { SearchModalContext } from '../contexts/searchModalContext';
-
-function Header() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const { openSearchModal } = useContext(SearchModalContext);
-
-  useEffect(() => {
-    if (isNavOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'initial';
-    }
-  }, [isNavOpen]);
-
-  const handleSearchModalOpen = () => {
-    openSearchModal();
-  };
-
-  const handleNavItemClick = () => {
-    if (isNavOpen) {
-      setIsNavOpen(false);
-    }
-  };
-
-  return (
-    <HeaderStyles>
-      <div className="container">
-        <div className="header__container">
-          <div className="logo">
-            <Logo />
-          </div>
-          <div className={clsx('nav__wrapper', isNavOpen && 'open')}>
-            <div className="mobileIcon">
-              <div className="searchIcon">
-                <div
-                  className="searchIcon__wrapper"
-                  onClick={handleSearchModalOpen}
-                  onKeyDown={handleSearchModalOpen}
-                  tabIndex={0}
-                  role="button"
-                >
-                  <MdSearch />
-                </div>
-              </div>
-              <ActionButton
-                className="mobileMenuBtn"
-                onKeyDown={() => setIsNavOpen(true)}
-                onClick={() => setIsNavOpen(true)}
-              >
-                <MdMenu />
-              </ActionButton>
-            </div>
-            {/* functionality to close menu upon clicking outside nav menu in mobile */}
-            {isNavOpen && (
-              <div
-                aria-label="Close Menu"
-                role="button"
-                tabIndex={0}
-                className="mobileNavBg"
-                onKeyDown={() => setIsNavOpen(false)}
-                onClick={() => setIsNavOpen(false)}
-              />
-            )}
-            <nav>
-              <ActionButton
-                className="mobileMenuCloseBtn"
-                onClick={() => setIsNavOpen(false)}
-                onKeyDown={() => setIsNavOpen(false)}
-              >
-                <MdClose />
-              </ActionButton>
-              <ul>
-                {menu.map((item) => (
-                  <li key={item.path}>
-                    <Link to={item.path} onClick={handleNavItemClick}>
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-                <li className="searchIcon">
-                  <div
-                    className="searchIcon__wrapper"
-                    onClick={handleSearchModalOpen}
-                    onKeyDown={handleSearchModalOpen}
-                    tabIndex={0}
-                    role="button"
-                  >
-                    <MdSearch />
-                  </div>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </HeaderStyles>
-  );
-}
-
-export default Header;
-
-```
 ## `web\src\components\homePage\FeaturedBlogs.js`
 ```
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { FeaturedBlogsStyles } from '../../styles/homePage/FeaturedBlogsStyles';
-import BlogGrid from '../blog/BlogGrid';
-import ParagraphText from '../typography/ParagraphText';
-import { SectionTitle } from '../typography/Title';
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import { FeaturedBlogsStyles } from "../../styles/homePage/FeaturedBlogsStyles";
+import BlogGrid from "../blog/BlogGrid";
+import ParagraphText from "../typography/ParagraphText";
+import { SectionTitle } from "../typography/Title";
 
 function FeaturedBlogs() {
   const data = useStaticQuery(graphql`
@@ -3440,38 +3641,67 @@ function FeaturedBlogs() {
       allSanitySpotlight(filter: { _id: { eq: "spotlightItems" } }) {
         nodes {
           blogs {
-            id
-            title
-            publishedAt
-            categories {
+            ... on SanityBlog {
+              id
               title
+              publishedAt
+              slug {
+                current
+              }
+              categories {
+                title
+                slug {
+                  current
+                }
+              }
+              coverImage {
+                alt
+                asset {
+                  gatsbyImageData
+                }
+              }
               slug {
                 current
               }
             }
-            coverImage {
-              alt
-              asset {
-                gatsbyImageData
+            ... on SanityPublication {
+              id
+              title
+              # Publications don't have categories in our schema,
+              # so we provide an empty array to prevent the UI from crashing
+              publishedAt: _createdAt
+              slug {
+                current
               }
-            }
-            slug {
-              current
+              coverImage {
+                alt
+                asset {
+                  gatsbyImageData
+                }
+              }
             }
           }
         }
       }
     }
   `);
-  const spotlightBlogs = data.allSanitySpotlight.nodes[0].blogs;
+  // Safely check if the spotlight document and blogs array exist
+  const spotlightNode = data.allSanitySpotlight.nodes[0];
+  const rawBlogs =
+    spotlightNode && spotlightNode.blogs ? spotlightNode.blogs : [];
+
+  const spotlightBlogs = rawBlogs.map((item) => ({
+    ...item,
+    categories: item.categories || [], // Default to empty array for Publications
+  }));
   return (
     <FeaturedBlogsStyles>
       <SectionTitle className="centre__text">
         Upcoming News, Updates & Events
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on D.E.M.T's projects, events, and
-        initiatives in rural development.
+        Stay informed with the latest updates on Diginotive's projects, events,
+        and initiatives in tech development.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
@@ -3500,14 +3730,15 @@ function HeroSection() {
         <div className="hero__wrapper">
           <div className="left">
             <h1 className="hero__heading">
-              Empowering sustainability through grassroots-driven
-              environmentally friendly intervention methods
+              Empowering Every Zimbabwean with the Intelligence of Tomorrow
             </h1>
             <ParagraphText className="hero__text">
-              We proactively leverage cutting edge solutions & collective effort
-              to compliment and augment the capacity of vulnerable rural
-              populations to envision and construct a resilient, environmentally
-              sustainable future, one community at a time.
+              "Diginotive Solutions (Private) Limited is a Zimbabwe-based
+              Research and Development company specialising in ICT, educational
+              technology, and AI content development. We empower businesses and
+              organisations through innovative problem-solving rooted in
+              thorough research and custom technological solutions tailored to
+              the African context."
             </ParagraphText>
             <Button to="/spotlight" tag={Link} className="hero__button">
               Explore Our Latest Work
@@ -3516,7 +3747,7 @@ function HeroSection() {
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/DiginotiveMalnutrition.jpg"
+              src="../../images/demtMalnutrition.jpg"
               alt="Diginotive hero image"
               placeholder="blurred"
               objectPosition="50% 30%"
@@ -3575,6 +3806,7 @@ function TopCategories() {
   const activities = data.allSanitySpotlight.nodes[0].activity;
   const objectives = data.allSanityObjective.nodes;
   const DiginotiveValues = data.allSanityValue.nodes;
+
   return (
     <TopCategoriesStyles>
       <SectionTitle className="centre__text">Vision</SectionTitle>
@@ -3604,191 +3836,6 @@ function TopCategories() {
 export default TopCategories;
 
 // https://0wfqubi4.api.sanity.io/v1/graphql/production/default
-
-```
-## `web\src\components\Layout.js`
-```
-import React from 'react';
-import Header from './Header';
-import GlobalStyles from '../styles/GlobalStyles';
-import 'normalize.css/normalize.css';
-import Footer from './Footer';
-import Search from './search/SearchModal';
-import { SearchModalContextProvider } from '../contexts/searchModalContext';
-
-function Layout({ children }) {
-  return (
-    <SearchModalContextProvider>
-      <GlobalStyles />
-      <Search /> {/* adding it to the component tree for it to work */}
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </SearchModalContextProvider>
-  );
-}
-
-export default Layout;
-
-```
-## `web\src\components\Logo.js`
-```
-import React from 'react';
-// import { GrTechnology } from 'react-icons/gr';
-import { StaticImage } from 'gatsby-plugin-image';
-import LogoStyles from '../styles/LogoStyles';
-
-function Logo() {
-  const width = 50;
-  const height = 50;
-  return (
-    <LogoStyles to="/">
-      <StaticImage src="../images/mwenje.jpg" width={width} height={height} />
-    </LogoStyles>
-  );
-}
-
-export default Logo;
-
-```
-## `web\src\components\MyPortableText.js`
-```
-import { PortableText } from '@portabletext/react';
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import theme from 'react-syntax-highlighter/dist/esm/styles/prism/vs-dark';
-import { getImage, getImageDimensions } from '@sanity/asset-utils';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import ParagraphText from './typography/ParagraphText';
-import { Title } from './typography/Title';
-import sanityConfig from '../../sanity-config';
-import { getSanityImageData } from '../utils/getSanityImageData';
-import { CustomImageStyles } from '../styles/CustomImageStyles';
-
-const myPortableTextComponents = {
-  block: {
-    normal: ({ children }) => <ParagraphText>{children}</ParagraphText>,
-    h1: ({ children }) => <Title>{children}</Title>,
-  },
-  marks: {
-    code: ({ children }) => (
-      <SyntaxHighlighter style={theme} className="bodyCode">
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ),
-  },
-  types: {
-    customImage: ({ value }) => {
-      const imageData = getImage(value.asset, sanityConfig).asset;
-      const { width, height } = getImageDimensions(value);
-
-      const image = {
-        url: imageData.url,
-        width,
-        height,
-      };
-
-      const gatsbyImageData = getSanityImageData({
-        image,
-        layout: 'constrained',
-      });
-
-      return (
-        <CustomImageStyles>
-          <GatsbyImage
-            image={gatsbyImageData}
-            alt={value.alt}
-            className="bodyImage custom-image"
-          />
-        </CustomImageStyles>
-      );
-    },
-  },
-};
-
-function MyPortableText({ value }) {
-  return <PortableText value={value} components={myPortableTextComponents} />;
-}
-
-export default MyPortableText;
-
-```
-## `web\src\components\PageHeader.js`
-```
-import React from 'react';
-import { PageHeaderStyles } from '../styles/PageHeaderStyles';
-import ParagraphText from './typography/ParagraphText';
-import { SectionTitle } from './typography/Title';
-
-function PageHeader({ title, description, children, className }) {
-  return (
-    <div className={className}>
-      <PageHeaderStyles>
-        <SectionTitle>{title}</SectionTitle>
-        <ParagraphText>{description}</ParagraphText>
-        {children}
-      </PageHeaderStyles>
-    </div>
-  );
-}
-
-export default PageHeader;
-
-```
-## `web\src\components\PageSpace.js`
-```
-import React from 'react';
-import { PageSpaceStyles } from '../styles/PageSpaceStyles';
-
-function PageSpace({ top, bottom, children }) {
-  return (
-    <PageSpaceStyles top={top} bottom={bottom}>
-      {children}
-    </PageSpaceStyles>
-  );
-}
-
-export default PageSpace;
-
-```
-## `web\src\components\Pagination.js`
-```
-import React from 'react';
-import { Link } from 'gatsby';
-import clsx from 'clsx';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { PaginationStyles } from '../styles/PaginationStyles';
-import ParagraphText from './typography/ParagraphText';
-
-function Pagination({ baseURL, numberOfPages, currentPage }) {
-  const prevPage = currentPage - 1 <= 1 ? '' : (currentPage - 1).toString();
-  const nextPage = (currentPage + 1).toString();
-  return (
-    <div className="container">
-      <PaginationStyles>
-        <div className="icons">
-          <Link
-            to={`${baseURL}/${prevPage}`}
-            className={clsx(currentPage <= 1 && 'disabled')}
-          >
-            <FiChevronLeft /> Prev
-          </Link>
-          <Link
-            to={`${baseURL}/${nextPage}`}
-            className={clsx(currentPage >= numberOfPages && 'disabled')}
-          >
-            Next <FiChevronRight />
-          </Link>
-        </div>
-        <ParagraphText>
-          page {currentPage} of {numberOfPages} pages
-        </ParagraphText>
-      </PaginationStyles>
-    </div>
-  );
-}
-
-export default Pagination;
 
 ```
 ## `web\src\components\search\SearchField.js`
@@ -4056,14 +4103,14 @@ export default SearchResult;
 ```
 ## `web\src\components\search\SearchResultItem.js`
 ```
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React, { useContext } from 'react';
-import { format } from 'date-fns';
-import { SearchResultItemStyles } from '../../styles/search/SearchResultItemStyles';
-import ParagraphText from '../typography/ParagraphText';
-import { Title } from '../typography/Title';
+import { GatsbyImage } from "gatsby-plugin-image";
+import React, { useContext } from "react";
+import { format } from "date-fns";
+import { SearchResultItemStyles } from "../../styles/search/SearchResultItemStyles";
+import ParagraphText from "../typography/ParagraphText";
+import { Title } from "../typography/Title";
 
-import { SearchModalContext } from '../../contexts/searchModalContext';
+import { SearchModalContext } from "../../contexts/searchModalContext";
 
 function BlogSearchResultItem({ blog }) {
   const { closeSearchModal } = useContext(SearchModalContext);
@@ -4080,7 +4127,7 @@ function BlogSearchResultItem({ blog }) {
       <div>
         <Title className="title">{blog.title}</Title>
         <ParagraphText className="categoriesText">
-          {format(new Date(blog.publishedAt), 'p, MMMM dd, yyyy')}
+          {format(new Date(blog.publishedAt), "p, MMMM dd, yyyy")}
         </ParagraphText>
       </div>
     </SearchResultItemStyles>
@@ -4111,6 +4158,26 @@ function AuthorSearchResultItem({ author }) {
         alt={author.profileImage.alt}
         className="authorProfileImg"
       />
+      <Title className="title">{author.name}</Title>
+    </SearchResultItemStyles>
+  );
+}
+
+function AuthorSearchResultItem({ author }) {
+  const { closeSearchModal } = useContext(SearchModalContext);
+  return (
+    <SearchResultItemStyles
+      to={`/team/${author.slug.current}`}
+      onClick={() => closeSearchModal()}
+    >
+      {/* Add this conditional check */}
+      {author.profileImage && (
+        <GatsbyImage
+          image={author.profileImage.asset.gatsbyImageData}
+          alt={author.profileImage.alt || author.name}
+          className="authorProfileImg"
+        />
+      )}
       <Title className="title">{author.name}</Title>
     </SearchResultItemStyles>
   );
@@ -4216,28 +4283,12 @@ export const buttonTypes = {
 ## `web\src\constants\menu.js`
 ```
 export const menu = [
-  {
-    title: 'Home',
-    path: '/',
-  },
-  {
-    title: 'Latest',
-    path: '/spotlight',
-  },
-  {
-    title: 'Our Work',
-    path: '/activities'
-  },
-  {
-    title: 'Categories',
-    path: '/categories',
-  },
-  {
-    title: 'About Us',
-    path: '/team',
-  },
+  { title: 'Home', path: '/' },
+  { title: 'Insights & News', path: '/spotlight' },
+  { title: 'Core Services', path: '/activities' },
+  { title: 'Publications', path: '/categories' },
+  { title: 'About Us', path: '/team' },
 ];
-
 ```
 ## `web\src\constants\socialLinks.js`
 ```
@@ -4377,6 +4428,369 @@ const IndexPage = () => (
 );
 
 export default IndexPage;
+
+```
+## `web\src\styles\CustomImageStyles.js`
+```
+import styled from 'styled-components';
+
+export const CustomImageStyles = styled.div`
+  .custom-image {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 10px;
+    margin: 15px;
+  }
+`;
+
+```
+## `web\src\styles\FooterStyles.js`
+```
+import styled from 'styled-components';
+
+export const FooterStyles = styled.footer`
+  padding: 5rem 0 2rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, #052A00, #081000);
+  .footer__text {
+    margin: 0 auto;
+    margin-top: 1rem;
+    max-width: 400px;
+  }
+  .footer__menuList {
+    margin-top: 1rem;
+    li {
+      display: inline-block;
+      margin: 0 1rem;
+      a {
+        color: var(--white-1);
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .footer__socialList {
+    margin-top: 1.5rem;
+    li {
+      display: inline-block;
+      margin: 0 0.5rem;
+      a {
+        display: inline-block;
+        width: 20px;
+        color: var(--gray);
+      }
+      :hover {
+        a {
+          color: var(--white-1);
+        }
+      }
+    }
+  }
+  .copyright {
+    margin-top: 1rem;
+    color: var(--gray);
+    font-size: 1.2rem;
+  }
+`;
+
+```
+## `web\src\styles\GlobalStyles.js`
+```
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root{
+    --primary: #078656;
+    --secondary: #12933F;
+    --darkBlue: #070747; 
+    --darkPurple: #0E0034;
+    --black-1: #000C02;
+    --black-2: #052A00;
+    --white-1: #C6BED9;
+    --gray: #64718A;
+    --grey: var(--gray);
+    --white: white;
+    --black: black;
+  }
+  html{
+    font-size: 10px;
+  }
+  
+  body{
+    min-height: 100vh;
+    line-height: 1.5;
+    width: 100%;
+    font-family: 'Inter';
+    background: var(--black-1);
+    color: var(--white);
+  }
+  a{
+    text-decoration: none;
+    color: var(--white);
+  }
+  .container{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+  }
+  img, svg{
+    height: 100%;
+    width: 100%;
+  }
+  li, ul{
+    list-style: none;
+  }
+`;
+
+export default GlobalStyles;
+
+```
+## `web\src\styles\HeaderStyles.js`
+```
+import styled from 'styled-components';
+
+export default styled.header`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  padding: 1rem 0;
+  transition: background 0.3s ease-in-out;
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav__wrapper {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      li {
+        &:hover {
+          a {
+            background: #2c313e;
+          }
+        }
+        a {
+          color: var(--white-1);
+          display: inline-block;
+          text-decoration: none;
+          font-size: 1.6rem;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
+  .searchIcon {
+    cursor: pointer;
+    font-size: 25px;
+    .searchIcon__wrapper {
+      border-radius: 6px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0a2b63;
+    }
+  }
+  .mobileMenuCloseBtn,
+  .mobileNavBg,
+  .mobileIcon,
+  .mobileMenuBtn {
+    display: none;
+  }
+  @media only screen and (max-width: 768px) {
+    .mobileMenuCloseBtn,
+    .mobileNavBg,
+    .mobileIcon,
+    .mobileMenuBtn {
+      display: initial;
+    }
+    .nav__wrapper {
+      nav {
+        z-index: 1002;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        transform: translateX(100%);
+        background-color: rgba(34, 11, 34, 0.95);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease transform;
+        ul {
+          width: 90%;
+          margin: 0 auto;
+          flex-direction: column;
+          li {
+            display: block;
+            margin: 0.5rem 0;
+            &:hover {
+              a {
+                background: var(--black-1);
+              }
+            }
+            a {
+              width: 100%;
+              padding: 0.5rem 1rem;
+              border-radius: 4px;
+            }
+            &.searchIcon {
+              display: none;
+            }
+          }
+        }
+        .mobileMenuCloseBtn {
+          color: crimson;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border-color: crimson;
+          &:hover {
+            background-color: crimson;
+            color: var(--white);
+          }
+        }
+      }
+      &.open {
+        nav {
+          transform: translateX(0);
+        }
+      }
+      .mobileNavBg {
+        z-index: 1001;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.6s linear 0s;
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .mobileIcon {
+      display: flex;
+      gap: 1rem;
+    }
+    .mobileMenuBtn {
+      svg {
+        font-size: 2.5rem;
+      }
+    }
+  }
+`;
+
+```
+## `web\src\styles\HomePageStyles.js`
+```
+import styled from 'styled-components';
+
+export default styled.div`
+  color: red;
+`;
+
+```
+## `web\src\styles\LogoStyles.js`
+```
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+
+export default styled(Link)`
+  display: inline-block;
+  max-width: 200px;
+  svg {
+    font-size: 3rem;
+    path {
+      stroke: white;
+    }
+  }
+`;
+
+```
+## `web\src\styles\NotFoundPageStyles.js`
+```
+import styled from 'styled-components';
+
+export const NotFoundPageStyles = styled.div`
+  text-align: center;
+  .title {
+    font-size: 5rem;
+  }
+  .link {
+    color: var(--primary);
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+```
+## `web\src\styles\PageHeaderStyles.js`
+```
+import styled from 'styled-components';
+
+export const PageHeaderStyles = styled.div`
+  margin: 3rem 0;
+  max-width: 400px;
+`;
+
+```
+## `web\src\styles\PageSpaceStyles.js`
+```
+import styled from 'styled-components';
+
+export const PageSpaceStyles = styled.div`
+  padding-top: ${(props) => props.top || 100}px;
+  padding-bottom: ${(props) => props.bottom || 100}px;
+`;
+
+```
+## `web\src\styles\PaginationStyles.js`
+```
+import styled from 'styled-components';
+
+export const PaginationStyles = styled.div`
+  text-align: center;
+  margin-top: 5rem;
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: var(--gray);
+      padding: 0.8rem;
+      border-radius: 4px;
+      svg {
+        padding: 0;
+        margin: 0;
+      }
+      &.disabled {
+        opacity: 0.2;
+        pointer-events: none;
+      }
+    }
+  }
+`;
 
 ```
 ## `web\src\styles\author\AuthorGridStyles.js`
@@ -4729,270 +5143,6 @@ export const SingleCategoryStyles = styled.div`
 `;
 
 ```
-## `web\src\styles\CustomImageStyles.js`
-```
-import styled from 'styled-components';
-
-export const CustomImageStyles = styled.div`
-  .custom-image {
-    max-width: 180px;
-    max-height: 180px;
-    border-radius: 10px;
-    margin: 15px;
-  }
-`;
-
-```
-## `web\src\styles\FooterStyles.js`
-```
-import styled from 'styled-components';
-
-export const FooterStyles = styled.footer`
-  padding: 5rem 0 2rem 0;
-  text-align: center;
-  background: linear-gradient(135deg, #052A00, #081000);
-  .footer__text {
-    margin: 0 auto;
-    margin-top: 1rem;
-    max-width: 400px;
-  }
-  .footer__menuList {
-    margin-top: 1rem;
-    li {
-      display: inline-block;
-      margin: 0 1rem;
-      a {
-        color: var(--white-1);
-        font-size: 1.6rem;
-      }
-    }
-  }
-  .footer__socialList {
-    margin-top: 1.5rem;
-    li {
-      display: inline-block;
-      margin: 0 0.5rem;
-      a {
-        display: inline-block;
-        width: 20px;
-        color: var(--gray);
-      }
-      :hover {
-        a {
-          color: var(--white-1);
-        }
-      }
-    }
-  }
-  .copyright {
-    margin-top: 1rem;
-    color: var(--gray);
-    font-size: 1.2rem;
-  }
-`;
-
-```
-## `web\src\styles\GlobalStyles.js`
-```
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyles = createGlobalStyle`
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  :root{
-    --primary: #078656;
-    --secondary: #12933F;
-    --darkBlue: #070747; 
-    --darkPurple: #0E0034;
-    --black-1: #000C02;
-    --black-2: #052A00;
-    --white-1: #C6BED9;
-    --gray: #64718A;
-    --grey: var(--gray);
-    --white: white;
-    --black: black;
-  }
-  html{
-    font-size: 10px;
-  }
-  
-  body{
-    min-height: 100vh;
-    line-height: 1.5;
-    width: 100%;
-    font-family: 'Inter';
-    background: var(--black-1);
-    color: var(--white);
-  }
-  a{
-    text-decoration: none;
-    color: var(--white);
-  }
-  .container{
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 90%;
-  }
-  img, svg{
-    height: 100%;
-    width: 100%;
-  }
-  li, ul{
-    list-style: none;
-  }
-`;
-
-export default GlobalStyles;
-
-```
-## `web\src\styles\HeaderStyles.js`
-```
-import styled from 'styled-components';
-
-export default styled.header`
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  overflow: hidden;
-  padding: 1rem 0;
-  transition: background 0.3s ease-in-out;
-  .header__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .nav__wrapper {
-    ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      li {
-        &:hover {
-          a {
-            background: #2c313e;
-          }
-        }
-        a {
-          color: var(--white-1);
-          display: inline-block;
-          text-decoration: none;
-          font-size: 1.6rem;
-          padding: 0.5rem 1rem;
-          border-radius: 6px;
-        }
-      }
-    }
-  }
-
-  .searchIcon {
-    cursor: pointer;
-    font-size: 25px;
-    .searchIcon__wrapper {
-      border-radius: 6px;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #0a2b63;
-    }
-  }
-  .mobileMenuCloseBtn,
-  .mobileNavBg,
-  .mobileIcon,
-  .mobileMenuBtn {
-    display: none;
-  }
-  @media only screen and (max-width: 768px) {
-    .mobileMenuCloseBtn,
-    .mobileNavBg,
-    .mobileIcon,
-    .mobileMenuBtn {
-      display: initial;
-    }
-    .nav__wrapper {
-      nav {
-        z-index: 1002;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        transform: translateX(100%);
-        background-color: rgba(34, 11, 34, 0.95);
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s ease transform;
-        ul {
-          width: 90%;
-          margin: 0 auto;
-          flex-direction: column;
-          li {
-            display: block;
-            margin: 0.5rem 0;
-            &:hover {
-              a {
-                background: var(--black-1);
-              }
-            }
-            a {
-              width: 100%;
-              padding: 0.5rem 1rem;
-              border-radius: 4px;
-            }
-            &.searchIcon {
-              display: none;
-            }
-          }
-        }
-        .mobileMenuCloseBtn {
-          color: crimson;
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          border-color: crimson;
-          &:hover {
-            background-color: crimson;
-            color: var(--white);
-          }
-        }
-      }
-      &.open {
-        nav {
-          transform: translateX(0);
-        }
-      }
-      .mobileNavBg {
-        z-index: 1001;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        transition: opacity 0.6s linear 0s;
-        background: rgba(0, 0, 0, 0.5);
-      }
-    }
-    .mobileIcon {
-      display: flex;
-      gap: 1rem;
-    }
-    .mobileMenuBtn {
-      svg {
-        font-size: 2.5rem;
-      }
-    }
-  }
-`;
-
-```
 ## `web\src\styles\homePage\FeaturedBlogsStyles.js`
 ```
 import styled from 'styled-components';
@@ -5117,105 +5267,6 @@ export const TopCategoriesStyles = styled.div`
   }
   .right__text {
     text-align: right;
-  }
-`;
-
-```
-## `web\src\styles\HomePageStyles.js`
-```
-import styled from 'styled-components';
-
-export default styled.div`
-  color: red;
-`;
-
-```
-## `web\src\styles\LogoStyles.js`
-```
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-
-export default styled(Link)`
-  display: inline-block;
-  max-width: 200px;
-  svg {
-    font-size: 3rem;
-    path {
-      stroke: white;
-    }
-  }
-`;
-
-```
-## `web\src\styles\NotFoundPageStyles.js`
-```
-import styled from 'styled-components';
-
-export const NotFoundPageStyles = styled.div`
-  text-align: center;
-  .title {
-    font-size: 5rem;
-  }
-  .link {
-    color: var(--primary);
-    text-decoration: none;
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-```
-## `web\src\styles\PageHeaderStyles.js`
-```
-import styled from 'styled-components';
-
-export const PageHeaderStyles = styled.div`
-  margin: 3rem 0;
-  max-width: 400px;
-`;
-
-```
-## `web\src\styles\PageSpaceStyles.js`
-```
-import styled from 'styled-components';
-
-export const PageSpaceStyles = styled.div`
-  padding-top: ${(props) => props.top || 100}px;
-  padding-bottom: ${(props) => props.bottom || 100}px;
-`;
-
-```
-## `web\src\styles\PaginationStyles.js`
-```
-import styled from 'styled-components';
-
-export const PaginationStyles = styled.div`
-  text-align: center;
-  margin-top: 5rem;
-  .icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      background: var(--gray);
-      padding: 0.8rem;
-      border-radius: 4px;
-      svg {
-        padding: 0;
-        margin: 0;
-      }
-      &.disabled {
-        opacity: 0.2;
-        pointer-events: none;
-      }
-    }
   }
 `;
 
@@ -5708,15 +5759,15 @@ export default SingleActivity;
 ```
 ## `web\src\templates\single-author.js`
 ```
-import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import BlogGrid from '../components/blog/BlogGrid';
-import MyPortableText from '../components/MyPortableText';
-import PageSpace from '../components/PageSpace';
-import SEO from '../components/seo';
-import { Title } from '../components/typography/Title';
-import { SingleAuthorStyles } from '../styles/author/SingleAuthorStyles';
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import BlogGrid from "../components/blog/BlogGrid";
+import MyPortableText from "../components/MyPortableText";
+import PageSpace from "../components/PageSpace";
+import SEO from "../components/seo";
+import { Title } from "../components/typography/Title";
+import { SingleAuthorStyles } from "../styles/author/SingleAuthorStyles";
 
 export const authorQuery = graphql`
   query SingleAuthorQuery($id: String!) {
@@ -5764,11 +5815,14 @@ function SingleAuthor({ data }) {
       <div className="container">
         <SingleAuthorStyles>
           <div className="author-header">
-            <GatsbyImage
-              image={author.profileImage.asset.gatsbyImageData}
-              alt={author.profileImage.alt}
-              className="profileImage"
-            />
+            {/* Add this conditional check */}
+            {author.profileImage && (
+              <GatsbyImage
+                image={author.profileImage.asset.gatsbyImageData}
+                alt={author.profileImage.alt || author.name}
+                className="profileImage"
+              />
+            )}
             <Title className="name">{author.name}</Title>
             <div className="bio">
               <MyPortableText value={author._rawBio} />

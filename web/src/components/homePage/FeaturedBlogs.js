@@ -55,7 +55,12 @@ function FeaturedBlogs() {
       }
     }
   `);
-  const spotlightBlogs = data.allSanitySpotlight.nodes[0].blogs.map((item) => ({
+  // Safely check if the spotlight document and blogs array exist
+  const spotlightNode = data.allSanitySpotlight.nodes[0];
+  const rawBlogs =
+    spotlightNode && spotlightNode.blogs ? spotlightNode.blogs : [];
+
+  const spotlightBlogs = rawBlogs.map((item) => ({
     ...item,
     categories: item.categories || [], // Default to empty array for Publications
   }));

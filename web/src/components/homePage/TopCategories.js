@@ -40,6 +40,7 @@ function TopCategories() {
   const activities = data.allSanitySpotlight.nodes[0].activity;
   const objectives = data.allSanityObjective.nodes;
   const DiginotiveValues = data.allSanityValue.nodes;
+
   return (
     <TopCategoriesStyles>
       <SectionTitle className="centre__text">Vision</SectionTitle>
