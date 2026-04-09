@@ -1,12 +1,12 @@
-import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import BlogGrid from '../components/blog/BlogGrid';
-import MyPortableText from '../components/MyPortableText';
-import PageSpace from '../components/PageSpace';
-import SEO from '../components/seo';
-import { Title } from '../components/typography/Title';
-import { SingleAuthorStyles } from '../styles/author/SingleAuthorStyles';
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import BlogGrid from "../components/blog/BlogGrid";
+import MyPortableText from "../components/MyPortableText";
+import PageSpace from "../components/PageSpace";
+import SEO from "../components/seo";
+import { Title } from "../components/typography/Title";
+import { SingleAuthorStyles } from "../styles/author/SingleAuthorStyles";
 
 export const authorQuery = graphql`
   query SingleAuthorQuery($id: String!) {
@@ -54,11 +54,14 @@ function SingleAuthor({ data }) {
       <div className="container">
         <SingleAuthorStyles>
           <div className="author-header">
-            <GatsbyImage
-              image={author.profileImage.asset.gatsbyImageData}
-              alt={author.profileImage.alt}
-              className="profileImage"
-            />
+            {/* Add this conditional check */}
+            {author.profileImage && (
+              <GatsbyImage
+                image={author.profileImage.asset.gatsbyImageData}
+                alt={author.profileImage.alt || author.name}
+                className="profileImage"
+              />
+            )}
             <Title className="name">{author.name}</Title>
             <div className="bio">
               <MyPortableText value={author._rawBio} />
