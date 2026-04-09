@@ -48,24 +48,7 @@ function AuthorSearchResultItem({ author }) {
       to={`/team/${author.slug.current}`}
       onClick={() => closeSearchModal()}
     >
-      <GatsbyImage
-        image={author.profileImage.asset.gatsbyImageData}
-        alt={author.profileImage.alt}
-        className="authorProfileImg"
-      />
-      <Title className="title">{author.name}</Title>
-    </SearchResultItemStyles>
-  );
-}
-
-function AuthorSearchResultItem({ author }) {
-  const { closeSearchModal } = useContext(SearchModalContext);
-  return (
-    <SearchResultItemStyles
-      to={`/team/${author.slug.current}`}
-      onClick={() => closeSearchModal()}
-    >
-      {/* Add this conditional check */}
+      {/* Safety check to prevent crash if image is missing */}
       {author.profileImage && (
         <GatsbyImage
           image={author.profileImage.asset.gatsbyImageData}
@@ -74,6 +57,18 @@ function AuthorSearchResultItem({ author }) {
         />
       )}
       <Title className="title">{author.name}</Title>
+    </SearchResultItemStyles>
+  );
+}
+
+function ActivitySearchResultItem({ activity }) {
+  const { closeSearchModal } = useContext(SearchModalContext);
+  return (
+    <SearchResultItemStyles
+      to={`/activities/${activity.slug.current}`}
+      onClick={() => closeSearchModal()}
+    >
+      <Title className="title">{activity.title}</Title>
     </SearchResultItemStyles>
   );
 }
