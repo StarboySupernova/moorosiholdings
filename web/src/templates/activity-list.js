@@ -31,12 +31,12 @@ function Activity({ data, pageContext }) {
 
   return (
     <>
-      <SEO title="Activities" />
+      <SEO title="Core Services" />
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="Our Work"
-            description="Diginotive's impactful work aimed at community empowerment and rapid development, all within the ever-important constraint of environmental sustainability & conservation"
+            title="Core Services & R&D"
+            description="Driving innovation, building solutions, and creating impact for Zimbabwe. Our evidence-based intelligence translates national digital strategies from policy into prosperity."
           />
           <ActivityGrid activities={activities} />
           {numberOfPages > 1 && (
