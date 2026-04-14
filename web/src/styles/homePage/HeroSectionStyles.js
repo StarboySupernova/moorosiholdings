@@ -7,13 +7,17 @@ export const HeroSectionStyles = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
+
   .container {
     height: 100%;
     z-index: 2;
   }
+
   .hero__wrapper {
     width: 100%;
     height: 100%;
+    position: relative;
+
     &::after {
       content: '';
       position: absolute;
@@ -21,34 +25,39 @@ export const HeroSectionStyles = styled.div`
       left: 0;
       width: 60%;
       height: 100%;
-      background: linear-gradient(135deg, #0A1128 0%, rgba(10, 17, 40, 0) 100%); 
+      background: linear-gradient(135deg, #0A1128 0%, rgba(10, 17, 40, 0) 100%);
       z-index: -1;
     }
+
     .left {
       width: 55%;
       padding: 100px 0 50px 0;
       animation: fadeUp 1s ease-out forwards;
+
       .hero__heading {
         max-width: 550px;
         font-size: 4rem;
         font-family: 'Poppins', sans-serif;
-        font-weight: '700';
+        font-weight: 700;
         margin: 0.5rem 0;
         line-height: 1.2;
         background: linear-gradient(to right, #ffffff, var(--primary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
       .hero__text {
         max-width: 450px;
         font-size: 1.6rem;
         margin-top: 1.5rem;
         color: var(--white-1);
       }
+
       .hero__button {
         margin-top: 2.5rem;
       }
     }
+
     .right {
       position: absolute;
       right: 0;
@@ -57,6 +66,7 @@ export const HeroSectionStyles = styled.div`
       height: 100%;
       z-index: 1;
       animation: fadeUp 1.2s ease-out forwards;
+
       .hero__image {
         width: 100%;
         height: 100%;
@@ -65,3 +75,4 @@ export const HeroSectionStyles = styled.div`
       }
     }
   }
+`;
