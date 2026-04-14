@@ -1,10 +1,10 @@
-import { Link } from "gatsby";
-import React from "react";
-import { menu } from "../constants/menu";
-import { socialLinks } from "../constants/socialLinks";
-import { FooterStyles } from "../styles/FooterStyles";
-import Logo from "./Logo";
-import ParagraphText from "./typography/ParagraphText";
+import { Link } from 'gatsby';
+import React from 'react';
+import { menu } from '../constants/menu';
+import { socialLinks } from '../constants/socialLinks';
+import { FooterStyles } from '../styles/FooterStyles';
+import Logo from './Logo';
+import ParagraphText from './typography/ParagraphText';
 
 function Footer() {
   return (
@@ -28,16 +28,18 @@ function Footer() {
         <ul className="footer__socialList">
           {socialLinks.map((item) => (
             <li key={item.name}>
-              <a href={item.url}>{item.icon}</a>
+              <a href={item.url} target="_blank" rel="noreferrer">
+                {item.icon}
+              </a>
             </li>
           ))}
         </ul>
         <ParagraphText className="copyright">
-          P.O. Box 42, Mutoko Rural District, Zimbabwe
+          15 Garfield Road, Belvedere, Harare, Zimbabwe
         </ParagraphText>
         <ParagraphText className="copyright">
-          © Diginotive | EST. 2019 | {new Date().getFullYear()} | All rights
-          reserved
+          © Diginotive Solutions (Pvt) Ltd | EST. 2025 |{' '}
+          {new Date().getFullYear()} | All rights reserved
         </ParagraphText>
       </div>
     </FooterStyles>
