@@ -30,7 +30,7 @@ function AuthorList({ data, pageContext }) {
   const authors = data.allSanityAuthor.nodes;
   const { currentPage, numberOfPages } = pageContext;
 
- return (
+  return (
     <PageSpace top={80} bottom={100}>
       <SEO title="About Us & Our Team" />
       <div className="container">
@@ -52,17 +52,3 @@ function AuthorList({ data, pageContext }) {
 }
 
 export default AuthorList;
-
-
-1954 intakaza & Edmond Shezi str Mayibuye
-Commercia
-Midrand
-1685
-South Africa
-076 150 1409
-
-write google review - https://search.google.com/local/writereview?placeid=ChIJ67iW6-ptlR4RtTWSXggOE0A
-read google reviews - https://search.google.com/local/reviews?placeid=ChIJ67iW6-ptlR4RtTWSXggOE0A
-
-
-*/
