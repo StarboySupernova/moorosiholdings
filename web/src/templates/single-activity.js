@@ -30,7 +30,6 @@ function SingleActivity({ data }) {
       <SingleCategoryStyles>
         <div className="container">
           <SEO title={`Gala Groove-${activity.title}`} />
-          // web/src/templates/single-activity.js
           <PageHeader title={activity.title} className="pageHeader">
             <MyPortableText value={activity._rawDescription} />
             {/* Add the check here */}
