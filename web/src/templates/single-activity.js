@@ -12,6 +12,7 @@ export const query = graphql`
     sanityActivity(id: { eq: $id }) {
       title
       _rawDescription
+      _rawBody 
       coverImage {
         asset {
           gatsbyImageData
@@ -29,10 +30,12 @@ function SingleActivity({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`Gala Groove-${activity.title}`} />
+          <SEO title={`Diginotive - ${activity.title}`} /> 
+          
           <PageHeader title={activity.title} className="pageHeader">
+            {/* This displays the Short Description in the header area */}
             <MyPortableText value={activity._rawDescription} />
-            {/* Add the check here */}
+            
             {activity.coverImage && (
               <GatsbyImage
                 image={activity.coverImage.asset.gatsbyImageData}
@@ -41,6 +44,12 @@ function SingleActivity({ data }) {
               />
             )}
           </PageHeader>
+
+          {/* 2. to display the Full Service Details (Body) */}
+          <hr style={{ margin: '2rem 0', opacity: '0.1' }} />
+          <div className="body-content">
+             <MyPortableText value={activity._rawBody} />
+          </div>
         </div>
       </SingleCategoryStyles>
     </PageSpace>
