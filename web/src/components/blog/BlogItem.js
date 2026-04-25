@@ -10,11 +10,13 @@ function BlogItem({ path, title, image, categories, publishedAt }) {
   return (
     <BlogItemStyles>
       <Link to={`/spotlight/${path}`}>
-        <GatsbyImage
-          image={image.imageData}
-          alt={image.altText}
-          className="img"
-        />
+        {image?.imageData && (
+          <GatsbyImage
+            image={image.imageData}
+            alt={image.altText || title}
+            className="img"
+          />
+        )}
       </Link>
       <Link to={`/spotlight/${path}`}>
         <Title className="title">{title}</Title>
@@ -24,14 +26,16 @@ function BlogItem({ path, title, image, categories, publishedAt }) {
           {format(new Date(publishedAt), 'p, MMMM dd, yyyy')}
         </ParagraphText>
       )}
-      <ParagraphText className="categoriesText">
-        {categories.map((item, index) => (
-          <span key={item.slug.current}>
-            <Link to={`/categories/${item.slug.current}`}>{item.title}</Link>
-            {index < categories.length - 1 ? ', ' : ''}
-          </span>
-        ))}
-      </ParagraphText>
+      {categories && categories.length > 0 && (
+        <ParagraphText className="categoriesText">
+          {categories.map((item, index) => (
+            <span key={item.slug?.current}>
+              <Link to={`/categories/${item.slug?.current}`}>{item.title}</Link>
+              {index < categories.length - 1 ? ', ' : ''}
+            </span>
+          ))}
+        </ParagraphText>
+      )}
     </BlogItemStyles>
   );
 }

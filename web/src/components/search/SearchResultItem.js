@@ -11,14 +11,17 @@ function BlogSearchResultItem({ blog }) {
   const { closeSearchModal } = useContext(SearchModalContext);
   return (
     <SearchResultItemStyles
-      to={`/spotlight/${blog.slug.current}`}
+      to={`/spotlight/${blog.slug?.current}`}
       onClick={() => closeSearchModal()}
     >
-      <GatsbyImage
-        image={blog.coverImage.asset.gatsbyImageData}
-        alt={blog.coverImage.alt}
-        className="img"
-      />
+      {/* Safely check if the image and asset exist */}
+      {blog.coverImage?.asset && (
+        <GatsbyImage
+          image={blog.coverImage.asset.gatsbyImageData}
+          alt={blog.coverImage.alt || blog.title}
+          className="img"
+        />
+      )}
       <div>
         <Title className="title">{blog.title}</Title>
         <ParagraphText className="categoriesText">
