@@ -5,27 +5,47 @@ import BlogGrid from "../blog/BlogGrid";
 import ParagraphText from "../typography/ParagraphText";
 import { SectionTitle } from "../typography/Title";
 
-const data = useStaticQuery(graphql`
+function FeaturedBlogs() {
+  const data = useStaticQuery(graphql`
     {
       allSanitySpotlight(filter: { _id: { eq: "spotlightItems" } }) {
         nodes {
           blogs {
             ... on SanityBlog {
-              _type 
+              _type
               id
               title
               publishedAt
-              slug { current }
-              categories { title, slug { current } }
-              coverImage { alt, asset { gatsbyImageData } }
+              slug {
+                current
+              }
+              categories {
+                title
+                slug {
+                  current
+                }
+              }
+              coverImage {
+                alt
+                asset {
+                  gatsbyImageData
+                }
+              }
             }
             ... on SanityPublication {
-              _type 
+              _type
               id
               title
               publishedAt: _createdAt
-              slug { current }
-              coverImage { alt, asset { gatsbyImageData } }
+              slug {
+                current
+              }
+              coverImage {
+                alt
+                asset {
+                  gatsbyImageData
+                }
+              }
             }
           }
         }
@@ -45,13 +65,17 @@ const data = useStaticQuery(graphql`
 
   return (
     <FeaturedBlogsStyles>
-      <SectionTitle className="centre__text">Upcoming News, Updates & Events</SectionTitle>
+      <SectionTitle className="centre__text">
+        Upcoming News, Updates & Events
+      </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Diginotive's projects, events, and initiatives.
+        Stay informed with the latest updates on Diginotive's projects, events,
+        and initiatives.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
   );
+}
 
 export default FeaturedBlogs;
 
