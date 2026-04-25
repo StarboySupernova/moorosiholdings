@@ -5,14 +5,13 @@ import BlogGrid from "../blog/BlogGrid";
 import ParagraphText from "../typography/ParagraphText";
 import { SectionTitle } from "../typography/Title";
 
-function FeaturedBlogs() {
-  const data = useStaticQuery(graphql`
+const data = useStaticQuery(graphql`
     {
       allSanitySpotlight(filter: { _id: { eq: "spotlightItems" } }) {
         nodes {
           blogs {
             ... on SanityBlog {
-              _type
+              _type 
               id
               title
               publishedAt
@@ -21,7 +20,7 @@ function FeaturedBlogs() {
               coverImage { alt, asset { gatsbyImageData } }
             }
             ... on SanityPublication {
-              _type
+              _type 
               id
               title
               publishedAt: _createdAt

@@ -2,7 +2,7 @@ import React from 'react';
 import { BlogGridStyles } from '../../styles/blog/BlogGridStyles';
 import BlogItem from './BlogItem';
 
-function BlogGrid({ blogs }) {
+function BlogGrid({ blogs, prefix = "spotlight" }) {
   return (
     <BlogGridStyles>
       {blogs &&
@@ -17,8 +17,8 @@ function BlogGrid({ blogs }) {
               altText: blog.coverImage?.alt,
             }}
             publishedAt={blog.publishedAt}
-            // Use the prefix from the data, default to spotlight
-            prefix={blog.prefix || "spotlight"} 
+            // Use the item's own prefix if it has one, otherwise fallback to the grid default
+            prefix={blog.prefix || prefix} 
           />
         ))}
     </BlogGridStyles>
