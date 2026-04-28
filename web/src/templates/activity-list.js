@@ -35,8 +35,8 @@ function Activity({ data, pageContext }) {
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="Core Services & R&D"
-            description="Driving innovation, building solutions, and creating impact for Zimbabwe. Our evidence-based intelligence translates national digital strategies from policy into prosperity."
+              title="Core Services & Divisions"
+              description="Uncompromising capability. We deploy specialized fleets for abnormal loads and execute integrated facility management—from MEP, Fire Safety, and Asphalt Resurfacing, to elite Security and Hygiene services."
           />
           <ActivityGrid activities={activities} />
           {numberOfPages > 1 && (

@@ -54,7 +54,7 @@ function SingleCategory({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`Diginotive-${category.title}`} />
+          <SEO title={`Moorosi Holdings-${category.title}`} />
           <PageHeader title={category.title} className="pageHeader">
             <MyPortableText value={category._rawDescription} />
             {/* Add the check here */}

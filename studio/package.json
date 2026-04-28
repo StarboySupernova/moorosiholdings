@@ -10,11 +10,11 @@
     "start": "sanity start",
     "build": "sanity build"
   },
-  "keywords": [
-    "Diginotive",
-    "cars",
-    "technology",
-    "mechanic"
+  "keywords":[
+      "Moorosi",
+      "Logistics",
+      "Facilities Management",
+      "Civil Engineering"
   ],
   "dependencies": {
     "@sanity/base": "^2.25.4",

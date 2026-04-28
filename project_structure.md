@@ -3585,7 +3585,7 @@ function FeaturedBlogs() {
         Latest Projects, News & Updates
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Moorosi Holdings' projects, fleet deployments, and corporate initiatives.
+        Stay informed with the latest insights into Moorosi Holdings' fleet deployments, heavy-lift projects, promotions and corporate milestones.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
@@ -3614,20 +3614,20 @@ function HeroSection() {
         <div className="hero__wrapper">
           <div className="left">
             <h1 className="hero__heading">
-              Delivering Excellence in Logistics, Construction & Facilities Management
+              Precision Logistics & Integrated Infrastructure Solutions
             </h1>
             <ParagraphText className="hero__text">
-              "Moorosi Holdings and Logistics provides reliable, scalable, and compliance-driven solutions. From abnormal load transport and civil engineering to fully integrated soft and hard building maintenance, we empower South African infrastructure."
+              Moorosi Holdings & Logistics is an industry-leading Level 1 B-BBEE partner. We provide the heavy-lifting power and technical precision required to move South Africa’s largest assets and maintain its most critical environments.
             </ParagraphText>
             <Button to="/activities" tag={Link} className="hero__button">
-              Explore Our Services
+              Command Your Project
             </Button>
           </div>
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/demtMalnutrition.jpg" /* Note: Remember to swap this image file in your repo later! */
-              alt="Moorosi Holdings Heavy Logistics"
+              src="../../images/demtMalnutrition.jpg" 
+              alt="Moorosi Holdings Heavy Plant and Logistics fleet"
               placeholder="blurred"
               objectPosition="50% 30%"
             />
@@ -4366,7 +4366,7 @@ export const socialLinks = [
   {
     name: 'whatsapp',
     url: `https://wa.me/27739775953?text=${encodeURIComponent(
-      "Hello, I would like to inquire about some services offered by Moorosi Holdings & Logistics."
+      "Hello Moorosi Holdings, I am interested in your logistics and facility management capabilities. Please contact me."
     )}`,
     icon: <FaWhatsappSquare />,
   },
@@ -5886,7 +5886,7 @@ function SingleActivity({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`Diginotive - ${activity.title}`} /> 
+          <SEO title={`Moorosi Holdings - ${activity.title}`} /> 
           
           <PageHeader title={activity.title} className="pageHeader">
             {/* This displays the Short Description in the header area */}
@@ -6213,7 +6213,7 @@ function SinglePublication({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`Diginotive - ${publication.title}`} />
+          <SEO title={`Moorosi Holdings - ${publication.title}`} />
           <PageHeader title={publication.title} className="pageHeader">
             
             {publication.targetAudience && (

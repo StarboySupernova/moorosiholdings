@@ -35,8 +35,8 @@ function Categories({ data, pageContext }) {
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="All Categories"
-            description="Our overarching intervention departments"
+              title="Operational Sectors"
+              description="Delivering robust, scalable solutions across Mining, Construction, Heavy Plant Logistics, and Integrated Facilities Management."
           />
           <CategoryGrid categories={categories} />
           {numberOfPages > 1 && (

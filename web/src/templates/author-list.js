@@ -35,8 +35,8 @@ function AuthorList({ data, pageContext }) {
       <SEO title="About Us & Our Team" />
       <div className="container">
         <PageHeader
-          title="About Us"
-          description="Our multidisciplinary team of experts spans research, engineering, finance, operations, and governance. We represent exactly the kind of home-grown innovation institution that drives digital transformation."
+            title="Executive Leadership"
+            description="Led by industry veterans, our team guarantees precision, safety, and scale. As a 100% Black-Owned, Level 1 B-BBEE entity, partnering with Moorosi Holdings grants your business 135% Procurement Recognition."
         />
         <AuthorGrid authors={authors} />
         {numberOfPages > 1 && (
