@@ -46,22 +46,19 @@ function TopCategories() {
     <TopCategoriesStyles>
       <SectionTitle className="centre__text">Vision</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        Creating resilient and sustainably developed communities
+        To be the premier partner in infrastructure development, heavy logistics, and facility management across South Africa, driving operational excellence.
       </ParagraphText>
       <SectionTitle className="centre__text">Mission</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        Strengthening the capabilities of grassroots communities to collectively
-        strategize, mitigate, and respond to a spectrum of natural and
-        anthropogenic shocks and hazards.
+        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors.
       </ParagraphText>
       <SectionTitle className="centre__text">Our Values</SectionTitle>
       <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
-      <SectionTitle>Core Initiatives</SectionTitle>
-      <ParagraphText>
-        Catalyzing Community & Grassroot Sustainability: Our Impactful
-        Interventions
+      <SectionTitle className="centre__text">Core Capabilities</SectionTitle>
+      <ParagraphText className="centre__text">
+        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
       </ParagraphText>
       <ActivityGrid activities={activities} />
     </TopCategoriesStyles>

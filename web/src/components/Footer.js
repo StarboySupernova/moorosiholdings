@@ -12,11 +12,7 @@ function Footer() {
       <div className="container">
         <Logo />
         <ParagraphText className="footer__text">
-          "Diginotive Solutions (Private) Limited is a Zimbabwe-based Research
-          and Development company specialising in ICT, educational technology,
-          and AI content development. We empower businesses and organisations
-          through innovative problem-solving rooted in thorough research and
-          custom technological solutions tailored to the African context."
+          "Moorosi Holdings and Logistics (Pty) Ltd is a 100% black-owned, Level 1 B-BBEE company based in Gauteng. We specialize in heavy machinery transport, civil engineering, and comprehensive soft and hard facility management services tailored to the public and private sectors."
         </ParagraphText>
         <ul className="footer__menuList">
           {menu.map((item) => (
@@ -35,10 +31,10 @@ function Footer() {
           ))}
         </ul>
         <ParagraphText className="copyright">
-          15 Garfield Road, Belvedere, Harare, Zimbabwe
+          Centurion, Gauteng
         </ParagraphText>
         <ParagraphText className="copyright">
-          © Diginotive Solutions (Pvt) Ltd | EST. 2025 |{' '}
+          © Moorosi Holdings and Logistics (Pty) Ltd | Reg: 2026/040477/07 |{' '}
           {new Date().getFullYear()} | All rights reserved
         </ParagraphText>
       </div>

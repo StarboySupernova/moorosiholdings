@@ -12,34 +12,34 @@ import { IoIosMailUnread } from 'react-icons/io';
 export const socialLinks = [
   {
     name: 'telephone',
-    url: 'tel:+263776798109',
+    url: 'tel:+27739775953',
     icon: <FaPhoneSquareAlt />,
   },
   {
     name: 'mail',
-    url: 'mailto:info@diginotive.co.zw',
+    url: 'mailto:moorosiholdings@gmail.com',
     icon: <IoIosMailUnread />,
   },
   {
     name: 'whatsapp',
-    url: `https://wa.me/263776798109?text=${encodeURIComponent(
-      "Hello, I would like to inquire about Diginotive's R&D and AI Solutions."
+    url: `https://wa.me/27739775953?text=${encodeURIComponent(
+      "Hello, I would like to inquire about some services offered by Moorosi Holdings & Logistics."
     )}`,
     icon: <FaWhatsappSquare />,
   },
   {
     name: 'facebook',
-    url: 'https://www.facebook.com/diginotivesolutions',
+    url: 'https://www.facebook.com/moorosiholdings',
     icon: <FaFacebook />,
   },
   {
     name: 'twitter',
-    url: 'https://twitter.com/diginotive_zw',
+    url: 'https://twitter.com/moorosiholdings_za',
     icon: <FaTwitter />,
   },
   {
     name: 'linkedin',
-    url: 'https://www.linkedin.com/company/diginotive-solutions',
+    url: 'https://www.linkedin.com/company/moorosiholdings',
     icon: <FaLinkedin />,
   },
 ];

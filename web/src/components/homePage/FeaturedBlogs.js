@@ -66,11 +66,10 @@ function FeaturedBlogs() {
   return (
     <FeaturedBlogsStyles>
       <SectionTitle className="centre__text">
-        Upcoming News, Updates & Events
+        Latest Projects, News & Updates
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Diginotive's projects, events,
-        and initiatives.
+        Stay informed with the latest updates on Moorosi Holdings' projects, fleet deployments, and corporate initiatives.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>

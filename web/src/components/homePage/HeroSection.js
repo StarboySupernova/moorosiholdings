@@ -12,25 +12,20 @@ function HeroSection() {
         <div className="hero__wrapper">
           <div className="left">
             <h1 className="hero__heading">
-              Empowering Every Zimbabwean with the Intelligence of Tomorrow
+              Delivering Excellence in Logistics, Construction & Facilities Management
             </h1>
             <ParagraphText className="hero__text">
-              "Diginotive Solutions (Private) Limited is a Zimbabwe-based
-              Research and Development company specialising in ICT, educational
-              technology, and AI content development. We empower businesses and
-              organisations through innovative problem-solving rooted in
-              thorough research and custom technological solutions tailored to
-              the African context."
+              "Moorosi Holdings and Logistics provides reliable, scalable, and compliance-driven solutions. From abnormal load transport and civil engineering to fully integrated soft and hard building maintenance, we empower South African infrastructure."
             </ParagraphText>
-            <Button to="/spotlight" tag={Link} className="hero__button">
-              Explore Our Latest Work
+            <Button to="/activities" tag={Link} className="hero__button">
+              Explore Our Services
             </Button>
           </div>
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/demtMalnutrition.jpg"
-              alt="Diginotive hero image"
+              src="../../images/demtMalnutrition.jpg" /* Note: Remember to swap this image file in your repo later! */
+              alt="Moorosi Holdings Heavy Logistics"
               placeholder="blurred"
               objectPosition="50% 30%"
             />

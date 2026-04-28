@@ -3,9 +3,9 @@ const sanityConfig = require("./sanity-config.js");
 
 module.exports = {
   siteMetadata: {
-    title: `Diginotive`,
-    siteUrl: `https://diginotive.netlify.com`,
-    description: `Diginotive`,
+    title: `Moorosi Holdings & Logistics`,
+    siteUrl: `https://moorosiholdings.co.za`,
+    description: `Level 1 B-BBEE integrated logistics, civil engineering, mining support, and facility management services.`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
