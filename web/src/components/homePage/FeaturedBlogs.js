@@ -69,7 +69,7 @@ function FeaturedBlogs() {
         Latest Projects, News & Updates
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Moorosi Holdings' projects, fleet deployments, and corporate initiatives.
+        Stay informed with the latest insights into Moorosi Holdings' fleet deployments, heavy-lift projects, promotions and corporate milestones.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>

@@ -23,7 +23,7 @@ export const socialLinks = [
   {
     name: 'whatsapp',
     url: `https://wa.me/27739775953?text=${encodeURIComponent(
-      "Hello, I would like to inquire about some services offered by Moorosi Holdings & Logistics."
+      "Hello Moorosi Holdings, I am interested in your logistics and facility management capabilities. Please contact me."
     )}`,
     icon: <FaWhatsappSquare />,
   },

@@ -945,7 +945,7 @@ import { MdStar } from "react-icons/md";
 
 function SidebarList() {
   return S.list()
-    .title("Diginotive")
+    .title("Moorosi Holdings")
     .items([
       S.listItem()
         .title("Spotlight")
@@ -2035,9 +2035,9 @@ const sanityConfig = require("./sanity-config.js");
 
 module.exports = {
   siteMetadata: {
-    title: `Diginotive`,
-    siteUrl: `https://diginotive.netlify.com`,
-    description: `Diginotive`,
+    title: `Moorosi Holdings & Logistics`,
+    siteUrl: `https://moorosiholdings.co.za`,
+    description: `Level 1 B-BBEE integrated logistics, civil engineering, mining support, and facility management services.`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -3367,11 +3367,7 @@ function Footer() {
       <div className="container">
         <Logo />
         <ParagraphText className="footer__text">
-          "Diginotive Solutions (Private) Limited is a Zimbabwe-based Research
-          and Development company specialising in ICT, educational technology,
-          and AI content development. We empower businesses and organisations
-          through innovative problem-solving rooted in thorough research and
-          custom technological solutions tailored to the African context."
+          "Moorosi Holdings and Logistics (Pty) Ltd is a 100% black-owned, Level 1 B-BBEE company based in Gauteng. We specialize in heavy machinery transport, civil engineering, and comprehensive soft and hard facility management services tailored to the public and private sectors."
         </ParagraphText>
         <ul className="footer__menuList">
           {menu.map((item) => (
@@ -3390,10 +3386,10 @@ function Footer() {
           ))}
         </ul>
         <ParagraphText className="copyright">
-          15 Garfield Road, Belvedere, Harare, Zimbabwe
+          Centurion, Gauteng
         </ParagraphText>
         <ParagraphText className="copyright">
-          © Diginotive Solutions (Pvt) Ltd | EST. 2025 |{' '}
+          © Moorosi Holdings and Logistics (Pty) Ltd | Reg: 2026/040477/07 |{' '}
           {new Date().getFullYear()} | All rights reserved
         </ParagraphText>
       </div>
@@ -3586,11 +3582,10 @@ function FeaturedBlogs() {
   return (
     <FeaturedBlogsStyles>
       <SectionTitle className="centre__text">
-        Upcoming News, Updates & Events
+        Latest Projects, News & Updates
       </SectionTitle>
       <ParagraphText className="featuredBlogs__text">
-        Stay informed with the latest updates on Diginotive's projects, events,
-        and initiatives.
+        Stay informed with the latest updates on Moorosi Holdings' projects, fleet deployments, and corporate initiatives.
       </ParagraphText>
       <BlogGrid blogs={spotlightBlogs} />
     </FeaturedBlogsStyles>
@@ -3619,25 +3614,20 @@ function HeroSection() {
         <div className="hero__wrapper">
           <div className="left">
             <h1 className="hero__heading">
-              Empowering Every Zimbabwean with the Intelligence of Tomorrow
+              Delivering Excellence in Logistics, Construction & Facilities Management
             </h1>
             <ParagraphText className="hero__text">
-              "Diginotive Solutions (Private) Limited is a Zimbabwe-based
-              Research and Development company specialising in ICT, educational
-              technology, and AI content development. We empower businesses and
-              organisations through innovative problem-solving rooted in
-              thorough research and custom technological solutions tailored to
-              the African context."
+              "Moorosi Holdings and Logistics provides reliable, scalable, and compliance-driven solutions. From abnormal load transport and civil engineering to fully integrated soft and hard building maintenance, we empower South African infrastructure."
             </ParagraphText>
-            <Button to="/spotlight" tag={Link} className="hero__button">
-              Explore Our Latest Work
+            <Button to="/activities" tag={Link} className="hero__button">
+              Explore Our Services
             </Button>
           </div>
           <div className="right">
             <StaticImage
               className="hero__image"
-              src="../../images/demtMalnutrition.jpg"
-              alt="Diginotive hero image"
+              src="../../images/demtMalnutrition.jpg" /* Note: Remember to swap this image file in your repo later! */
+              alt="Moorosi Holdings Heavy Logistics"
               placeholder="blurred"
               objectPosition="50% 30%"
             />
@@ -3701,22 +3691,19 @@ function TopCategories() {
     <TopCategoriesStyles>
       <SectionTitle className="centre__text">Vision</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        Creating resilient and sustainably developed communities
+        To be the premier partner in infrastructure development, heavy logistics, and facility management across South Africa, driving operational excellence.
       </ParagraphText>
       <SectionTitle className="centre__text">Mission</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        Strengthening the capabilities of grassroots communities to collectively
-        strategize, mitigate, and respond to a spectrum of natural and
-        anthropogenic shocks and hazards.
+        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors.
       </ParagraphText>
       <SectionTitle className="centre__text">Our Values</SectionTitle>
       <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
-      <SectionTitle>Core Initiatives</SectionTitle>
-      <ParagraphText>
-        Catalyzing Community & Grassroot Sustainability: Our Impactful
-        Interventions
+      <SectionTitle className="centre__text">Core Capabilities</SectionTitle>
+      <ParagraphText className="centre__text">
+        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
       </ParagraphText>
       <ActivityGrid activities={activities} />
     </TopCategoriesStyles>
@@ -3924,7 +3911,7 @@ function SearchField({ value, setValue, onFocus }) {
     <SearchFieldStyles>
       <input
         type="text"
-        placeholder="Diginotive Search"
+        placeholder="Search Moorosi Holdings"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onFocus={onFocus && onFocus}
@@ -4368,34 +4355,34 @@ import { IoIosMailUnread } from 'react-icons/io';
 export const socialLinks = [
   {
     name: 'telephone',
-    url: 'tel:+263776798109',
+    url: 'tel:+27739775953',
     icon: <FaPhoneSquareAlt />,
   },
   {
     name: 'mail',
-    url: 'mailto:info@diginotive.co.zw',
+    url: 'mailto:moorosiholdings@gmail.com',
     icon: <IoIosMailUnread />,
   },
   {
     name: 'whatsapp',
-    url: `https://wa.me/263776798109?text=${encodeURIComponent(
-      "Hello, I would like to inquire about Diginotive's R&D and AI Solutions."
+    url: `https://wa.me/27739775953?text=${encodeURIComponent(
+      "Hello, I would like to inquire about some services offered by Moorosi Holdings & Logistics."
     )}`,
     icon: <FaWhatsappSquare />,
   },
   {
     name: 'facebook',
-    url: 'https://www.facebook.com/diginotivesolutions',
+    url: 'https://www.facebook.com/moorosiholdings',
     icon: <FaFacebook />,
   },
   {
     name: 'twitter',
-    url: 'https://twitter.com/diginotive_zw',
+    url: 'https://twitter.com/moorosiholdings_za',
     icon: <FaTwitter />,
   },
   {
     name: 'linkedin',
-    url: 'https://www.linkedin.com/company/diginotive-solutions',
+    url: 'https://www.linkedin.com/company/moorosiholdings',
     icon: <FaLinkedin />,
   },
 ];
@@ -4474,7 +4461,7 @@ import SEO from "../components/seo";
 
 const IndexPage = () => (
   <>
-    <SEO title="Diginotive Solutions" />
+    <SEO title="Moorosi Holdings" />
     <HeroSection />
     <div className="container">
       <FeaturedBlogs />
