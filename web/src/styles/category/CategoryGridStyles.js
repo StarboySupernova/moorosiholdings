@@ -15,16 +15,40 @@ export const CategoryGridStyles = styled.div`
 export const ValueGridStyles = styled.div`
   display: grid;
   margin-top: 1rem;
-  gap: 1rem;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Reduced the minimum width to 250px */
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Increased min-width to allow room for wrapping */
+
+  /* TARGET ONLY IMAGES INSIDE THE VALUE GRID */
+  .value-card .bodyImage {
+    width: 160px !important;    /* Mandated width */
+    height: 160px !important;   /* Mandated height */
+    float: left;               /* This triggers the text wrap */
+    margin: 0 2rem 1rem 0;     /* Space between image and wrapping text */
+    border-radius: 8px;
+    overflow: hidden;
+    shape-outside: inset(0%);  /* Tells the text to follow the square boundary */
+  }
+
+  /* FORCE THE DISTORTION */
+  .value-card .bodyImage img {
+    object-fit: fill !important; 
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* CLEARFIX to prevent cards from collapsing */
+  .value-card .text-wrap-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(150px, 1fr)
-    ); /* Adjusted for smaller screens */
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    .value-card .bodyImage {
+      width: 120px !important;
+      height: 120px !important;
+      margin: 0 1.5rem 0.5rem 0;
+    }
   }
 `;
