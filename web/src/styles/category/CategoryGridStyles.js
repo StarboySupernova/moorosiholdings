@@ -3,12 +3,47 @@ import styled from 'styled-components';
 export const CategoryGridStyles = styled.div`
   display: grid;
   margin-top: 3.5rem;
-  display: grid;
   gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  /* TARGET BOTH VALUE AND OBJECTIVE CARDS */
+  .value-card .bodyImage,
+  .objective-card .bodyImage {
+    width: 160px !important;    /* Mandated width */
+    height: 160px !important;   /* Mandated height */
+    float: left;                /* Magazine text wrap */
+    margin: 0 2rem 1rem 0;      /* Margin: Right and Bottom */
+    border-radius: 8px;
+    overflow: hidden;
+    shape-outside: inset(0%);   /* Ensures text flows around the square */
+  }
+
+  /* FORCE DISTORTION/FILL FOR BOTH */
+  .value-card .bodyImage img,
+  .objective-card .bodyImage img {
+    object-fit: fill !important; 
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* CLEARFIX to keep cards from breaking */
+  .value-card .text-wrap-container::after,
+  .objective-card .text-wrap-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    
+    .value-card .bodyImage,
+    .objective-card .bodyImage {
+      width: 120px !important;
+      height: 120px !important;
+      margin: 0 1.5rem 0.5rem 0;
+    }
   }
 `;
 

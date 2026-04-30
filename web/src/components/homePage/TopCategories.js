@@ -26,6 +26,7 @@ function TopCategories() {
       allSanityObjective {
         nodes {
           id
+          title
           _rawDescription
         }
       }
