@@ -74,6 +74,13 @@ exports.createPages = async ({ graphql, actions }) => {
   
   // creating single blog pages
   blogs.forEach((blog) => {
+    console.log("Creating page for:", blog.id, blog.slug?.current); // add this
+
+    if (!blog.slug?.current) {
+      console.warn(`SKIPPING blog with no slug: ${blog.id}`);
+      return;
+    }
+
     createPage({
       path: `/spotlight/${blog.slug.current}`,
       component: singleBlogTemplate,
