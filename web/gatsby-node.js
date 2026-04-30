@@ -115,7 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/categories/${category.slug.current}`,
       component: singleCategoryTemplate,
-      context: { id: category.id },
+      context: { id: category.id }, 
     });
   });
 
