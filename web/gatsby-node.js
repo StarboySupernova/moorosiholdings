@@ -74,7 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
   // creating single blog pages
   blogs.forEach((blog) => {
-    console.log("Creating page for:", blog.id, blog.slug?.current); // add this
+    console.log("Creating page for:", blog.id, blog.slug?.current); 
 
     if (!blog.slug?.current) {
       console.warn(`SKIPPING blog with no slug: ${blog.id}`);
@@ -96,6 +96,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // creating single category pages
   categories.forEach((category) => {
+    createPage({
+      path: `/categories/${category.slug.current}`,
+      component: singleCategoryTemplate,
+      context: { id: category.id },
+    });
+  });
+
+  categories.forEach((category) => {
+    console.log(
+      "Creating category page for:",
+      category.id,
+      category.slug?.current,
+    ); 
+
+    if (!category.slug?.current) return;
+
     createPage({
       path: `/categories/${category.slug.current}`,
       component: singleCategoryTemplate,
