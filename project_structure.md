@@ -1743,7 +1743,7 @@ import { FcServices } from 'react-icons/fc';
 
 export default {
   name: 'activity', // Keeping 'activity' prevents breaking existing Gatsby GraphQL queries
-  title: 'Service / R&D Pillar', // Changes how it looks in Sanity Studio
+  title: 'Industrial Operational Pillars', // Changes how it looks in Sanity Studio
   type: 'document',
   icon: FcServices,
   fields: [
@@ -1756,7 +1756,7 @@ export default {
     },
     { name: 'coverImage', title: 'Cover Image', type: 'customImage' },
     { name: 'description', title: 'Short Description', type: 'normalText' },
-    { name: 'body', title: 'Full Service Details', type: 'richText' }, // Added richText for deep dives
+    { name: 'body', title: 'Operational Deep-Dive', type: 'richText' }, // Added richText for deep dives
   ],
   preview: {
     select: {
@@ -3192,11 +3192,7 @@ function ObjectiveGrid({ objectives }) {
   return (
     <CategoryGridStyles>
       {objectives.map((item) => (
-        <ObjectiveItem
-          key={item.id}
-          title={item.title}
-          description={item._rawDescription}
-        />
+        <ObjectiveItem key={item.id} description={item._rawDescription} />
       ))}
     </CategoryGridStyles>
   );
@@ -3210,13 +3206,11 @@ export default ObjectiveGrid;
 import React from 'react';
 import MyPortableText from '../MyPortableText';
 import { CategoryItemStyles } from '../../styles/category/CategoryItemStyles';
-import { Title } from '../typography/Title'; 
 
-function ObjectiveItem({ title, description }) { 
+function ObjectiveItem({ description }) {
   return (
-    <CategoryItemStyles className="objective-card"> 
-      <Title className="title">{title}</Title> 
-      <div className="text-wrap-container">
+    <CategoryItemStyles>
+      <div className="text">
         <MyPortableText value={description} />
       </div>
     </CategoryItemStyles>
@@ -3224,6 +3218,7 @@ function ObjectiveItem({ title, description }) {
 }
 
 export default ObjectiveItem;
+
 ```
 ## `web\src\components\category\ValueGrid.js`
 ```
@@ -3706,7 +3701,6 @@ function TopCategories() {
       allSanityObjective {
         nodes {
           id
-          title
           _rawDescription
         }
       }
@@ -4776,47 +4770,12 @@ import styled from 'styled-components';
 export const CategoryGridStyles = styled.div`
   display: grid;
   margin-top: 3.5rem;
+  display: grid;
   gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-  /* TARGET BOTH VALUE AND OBJECTIVE CARDS */
-  .value-card .bodyImage,
-  .objective-card .bodyImage {
-    width: 160px !important;    /* Mandated width */
-    height: 160px !important;   /* Mandated height */
-    float: left;                /* Magazine text wrap */
-    margin: 0 2rem 1rem 0;      /* Margin: Right and Bottom */
-    border-radius: 8px;
-    overflow: hidden;
-    shape-outside: inset(0%);   /* Ensures text flows around the square */
-  }
-
-  /* FORCE DISTORTION/FILL FOR BOTH */
-  .value-card .bodyImage img,
-  .objective-card .bodyImage img {
-    object-fit: fill !important; 
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  /* CLEARFIX to keep cards from breaking */
-  .value-card .text-wrap-container::after,
-  .objective-card .text-wrap-container::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    
-    .value-card .bodyImage,
-    .objective-card .bodyImage {
-      width: 120px !important;
-      height: 120px !important;
-      margin: 0 1.5rem 0.5rem 0;
-    }
   }
 `;
 

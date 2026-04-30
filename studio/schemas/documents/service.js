@@ -2,7 +2,7 @@ import { FcServices } from 'react-icons/fc';
 
 export default {
   name: 'activity', // Keeping 'activity' prevents breaking existing Gatsby GraphQL queries
-  title: 'Service / R&D Pillar', // Changes how it looks in Sanity Studio
+  title: 'Industrial Operational Pillars', // Changes how it looks in Sanity Studio
   type: 'document',
   icon: FcServices,
   fields: [
@@ -15,7 +15,7 @@ export default {
     },
     { name: 'coverImage', title: 'Cover Image', type: 'customImage' },
     { name: 'description', title: 'Short Description', type: 'normalText' },
-    { name: 'body', title: 'Full Service Details', type: 'richText' }, // Added richText for deep dives
+    { name: 'body', title: 'Operational Deep-Dive', type: 'richText' }, // Added richText for deep dives
   ],
   preview: {
     select: {
