@@ -32,6 +32,7 @@ function TopCategories() {
       allSanityValue {
         nodes {
           id
+          title
           _rawDescription
         }
       }

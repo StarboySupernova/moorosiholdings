@@ -6,7 +6,11 @@ function ValueGrid({ DiginotiveValues }) {
   return (
     <ValueGridStyles>
       {DiginotiveValues.map((item) => (
-        <ValueItem key={item.id} description={item._rawDescription} />
+        <ValueItem
+          key={item.id}
+          title={item.title}
+          description={item._rawDescription}
+        />
       ))}
     </ValueGridStyles>
   );

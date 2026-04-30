@@ -4,6 +4,14 @@
 
 A complete full-stack web-app created with `JAMstack`. ([Gatsby.js](https://www.gatsbyjs.org/) & [Sanity.io](https://sanity.io)).
 
+# Moorosi Holdings and Logistics (Pty) Ltd
+Official B2B Platform for Level 1 B-BBEE Heavy Logistics and Facility Management.
+
+## Corporate Identity
+- **Registration:** 2026/040477/07
+- **Location:** Midrand, South Africa
+- **CSD:** MAAA1687050
+
 <a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 45px !important;width: 162.75px !important;" ></a>
 
 ---
