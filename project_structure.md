@@ -890,11 +890,19 @@ function printTree(dir, prefix = "", stream) {
 ```
 ## `README.md`
 ```
-![Mwenje-Geology](./mwenje.png)
+![Moorosi Holdings](./mwenje.png)
 
-# Mwenje Geology. By Christian Simbarashe Dombodzvuku
+# Official web platform showcasing Tier-1 logistics, plant hire, and integrated facility management solutions. By Christian Simbarashe Dombodzvuku
 
 A complete full-stack web-app created with `JAMstack`. ([Gatsby.js](https://www.gatsbyjs.org/) & [Sanity.io](https://sanity.io)).
+
+# Moorosi Holdings and Logistics (Pty) Ltd
+Official B2B Platform for Level 1 B-BBEE Heavy Logistics and Facility Management.
+
+## Corporate Identity
+- **Registration:** 2026/040477/07
+- **Location:** Midrand, South Africa
+- **CSD:** MAAA1687050
 
 <a href="https://www.buymeacoffee.com/" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 45px !important;width: 162.75px !important;" ></a>
 
@@ -1681,29 +1689,46 @@ import { FcLibrary } from 'react-icons/fc';
 
 export default {
   name: 'publication',
-  title: 'Publication & Books',
+  title: 'Corporate Credentials & Documentation', // Changed from "Publication & Books"
   type: 'document',
   icon: FcLibrary,
   fields: [
-    { name: 'title', title: 'Book/Series Title', type: 'string' },
-    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
+    { 
+      name: 'title', 
+      title: 'Document or Certification Name', // Changed from "Book/Series Title"
+      type: 'string' 
+    },
+    { 
+      name: 'slug', 
+      title: 'URL Identifier', // Changed from "Slug"
+      type: 'slug', 
+      options: { source: 'title' } 
+    },
     {
       name: 'author',
-      title: 'Author/Team',
+      title: 'Issuing Department / Team', // Changed from "Author/Team"
       type: 'reference',
       to: [{ type: 'author' }],
     },
-    { name: 'coverImage', title: 'Book Cover', type: 'customImage' },
+    { 
+      name: 'coverImage', 
+      title: 'Document Preview Image (or Badge)', // Changed from "Book Cover"
+      type: 'customImage' 
+    },
     {
       name: 'targetAudience',
-      title: 'Target Audience',
+      title: 'Restricted Stakeholders / Intended For', // Changed from "Target Audience"
       type: 'string',
-      description: 'e.g., Policymakers, Primary Students, General Public',
+      description: 'e.g., Tendering Committees, Legal Auditors, General Partners',
     },
-    { name: 'description', title: 'Synopsis', type: 'richText' },
+    { 
+      name: 'description', 
+      title: 'Executive Summary', // Changed from "Synopsis"
+      type: 'richText' 
+    },
     {
       name: 'documentUpload',
-      title: 'Document Upload (PDF, Word, etc.)',
+      title: 'Certified Digital Copy (PDF/Office)', // Changed from "Document Upload"
       type: 'file',
       options: {
         storeOriginalFilename: true, 
@@ -2814,10 +2839,10 @@ export const wrapPageElement = ({ element, props }) => (
 ## `web\package.json`
 ```
 {
-  "name": "react-js-fullstack-web-app",
+  "name": "moorosi-holdings-corporate-portal",
   "version": "1.0.0",
   "private": true,
-  "description": "saint-christian-templ",
+  "description": "Official Corporate Platform for Moorosi Holdings & Logistics (Pty) Ltd",
   "author": "Christian Simbarashe",
   "keywords": [
     "gatsby"
@@ -3167,7 +3192,11 @@ function ObjectiveGrid({ objectives }) {
   return (
     <CategoryGridStyles>
       {objectives.map((item) => (
-        <ObjectiveItem key={item.id} description={item._rawDescription} />
+        <ObjectiveItem
+          key={item.id}
+          title={item.title}
+          description={item._rawDescription}
+        />
       ))}
     </CategoryGridStyles>
   );
@@ -3181,11 +3210,13 @@ export default ObjectiveGrid;
 import React from 'react';
 import MyPortableText from '../MyPortableText';
 import { CategoryItemStyles } from '../../styles/category/CategoryItemStyles';
+import { Title } from '../typography/Title'; 
 
-function ObjectiveItem({ description }) {
+function ObjectiveItem({ title, description }) { 
   return (
-    <CategoryItemStyles>
-      <div className="text">
+    <CategoryItemStyles className="objective-card"> 
+      <Title className="title">{title}</Title> 
+      <div className="text-wrap-container">
         <MyPortableText value={description} />
       </div>
     </CategoryItemStyles>
@@ -3193,7 +3224,6 @@ function ObjectiveItem({ description }) {
 }
 
 export default ObjectiveItem;
-
 ```
 ## `web\src\components\category\ValueGrid.js`
 ```
@@ -3205,7 +3235,11 @@ function ValueGrid({ DiginotiveValues }) {
   return (
     <ValueGridStyles>
       {DiginotiveValues.map((item) => (
-        <ValueItem key={item.id} description={item._rawDescription} />
+        <ValueItem
+          key={item.id}
+          title={item.title}
+          description={item._rawDescription}
+        />
       ))}
     </ValueGridStyles>
   );
@@ -3219,11 +3253,13 @@ export default ValueGrid;
 import React from 'react';
 import MyPortableText from '../MyPortableText';
 import { CategoryItemStyles } from '../../styles/category/CategoryItemStyles';
+import { Title } from '../typography/Title';
 
-function ValueItem({ description }) {
+function ValueItem({ title, description }) {
   return (
-    <CategoryItemStyles>
-      <div className="text">
+    <CategoryItemStyles className="value-card"> 
+      <Title className="title">{title}</Title>
+      <div className="text-wrap-container">
         <MyPortableText value={description} />
       </div>
     </CategoryItemStyles>
@@ -3231,7 +3267,6 @@ function ValueItem({ description }) {
 }
 
 export default ValueItem;
-
 ```
 ## `web\src\components\ConstrainedPortableText.js`
 ```
@@ -3671,12 +3706,14 @@ function TopCategories() {
       allSanityObjective {
         nodes {
           id
+          title
           _rawDescription
         }
       }
       allSanityValue {
         nodes {
           id
+          title
           _rawDescription
         }
       }
@@ -3689,22 +3726,22 @@ function TopCategories() {
 
   return (
     <TopCategoriesStyles>
+      <SectionTitle className="centre__text">Industrial Capabilities</SectionTitle>
+      <ParagraphText className="centre__text">
+        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
+      </ParagraphText>
       <SectionTitle className="centre__text">Vision</SectionTitle>
       <ParagraphText className="hero__text centre__text">
         To be the premier partner in infrastructure development, heavy logistics, and facility management across South Africa, driving operational excellence.
       </ParagraphText>
       <SectionTitle className="centre__text">Mission</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors.
+        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors. To provide unshakeable operational continuity for our clients through precision heavy-lift logistics, certified civil engineering, and proactive facility management.
       </ParagraphText>
       <SectionTitle className="centre__text">Our Values</SectionTitle>
       <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
-      <SectionTitle className="centre__text">Core Capabilities</SectionTitle>
-      <ParagraphText className="centre__text">
-        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
-      </ParagraphText>
       <ActivityGrid activities={activities} />
     </TopCategoriesStyles>
   );
@@ -3712,7 +3749,6 @@ function TopCategories() {
 
 export default TopCategories;
 
-// https://0wfqubi4.api.sanity.io/v1/graphql/production/default
 
 ```
 ## `web\src\components\Layout.js`
@@ -4740,32 +4776,90 @@ import styled from 'styled-components';
 export const CategoryGridStyles = styled.div`
   display: grid;
   margin-top: 3.5rem;
-  display: grid;
   gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  /* TARGET BOTH VALUE AND OBJECTIVE CARDS */
+  .value-card .bodyImage,
+  .objective-card .bodyImage {
+    width: 160px !important;    /* Mandated width */
+    height: 160px !important;   /* Mandated height */
+    float: left;                /* Magazine text wrap */
+    margin: 0 2rem 1rem 0;      /* Margin: Right and Bottom */
+    border-radius: 8px;
+    overflow: hidden;
+    shape-outside: inset(0%);   /* Ensures text flows around the square */
+  }
+
+  /* FORCE DISTORTION/FILL FOR BOTH */
+  .value-card .bodyImage img,
+  .objective-card .bodyImage img {
+    object-fit: fill !important; 
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* CLEARFIX to keep cards from breaking */
+  .value-card .text-wrap-container::after,
+  .objective-card .text-wrap-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    
+    .value-card .bodyImage,
+    .objective-card .bodyImage {
+      width: 120px !important;
+      height: 120px !important;
+      margin: 0 1.5rem 0.5rem 0;
+    }
   }
 `;
 
 export const ValueGridStyles = styled.div`
   display: grid;
   margin-top: 1rem;
-  gap: 1rem;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Reduced the minimum width to 250px */
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Increased min-width to allow room for wrapping */
+
+  /* TARGET ONLY IMAGES INSIDE THE VALUE GRID */
+  .value-card .bodyImage {
+    width: 160px !important;    /* Mandated width */
+    height: 160px !important;   /* Mandated height */
+    float: left;               /* This triggers the text wrap */
+    margin: 0 2rem 1rem 0;     /* Space between image and wrapping text */
+    border-radius: 8px;
+    overflow: hidden;
+    shape-outside: inset(0%);  /* Tells the text to follow the square boundary */
+  }
+
+  /* FORCE THE DISTORTION */
+  .value-card .bodyImage img {
+    object-fit: fill !important; 
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* CLEARFIX to prevent cards from collapsing */
+  .value-card .text-wrap-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(150px, 1fr)
-    ); /* Adjusted for smaller screens */
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    .value-card .bodyImage {
+      width: 120px !important;
+      height: 120px !important;
+      margin: 0 1.5rem 0.5rem 0;
+    }
   }
 `;
-
 ```
 ## `web\src\styles\category\CategoryItemStyles.js`
 ```

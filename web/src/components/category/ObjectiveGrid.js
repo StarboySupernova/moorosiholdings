@@ -6,11 +6,7 @@ function ObjectiveGrid({ objectives }) {
   return (
     <CategoryGridStyles>
       {objectives.map((item) => (
-        <ObjectiveItem
-          key={item.id}
-          title={item.title}
-          description={item._rawDescription}
-        />
+        <ObjectiveItem key={item.id} description={item._rawDescription} />
       ))}
     </CategoryGridStyles>
   );

@@ -26,7 +26,6 @@ function TopCategories() {
       allSanityObjective {
         nodes {
           id
-          title
           _rawDescription
         }
       }
@@ -46,6 +45,10 @@ function TopCategories() {
 
   return (
     <TopCategoriesStyles>
+      <SectionTitle className="centre__text">Industrial Capabilities</SectionTitle>
+      <ParagraphText className="centre__text">
+        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
+      </ParagraphText>
       <SectionTitle className="centre__text">Vision</SectionTitle>
       <ParagraphText className="hero__text centre__text">
         To be the premier partner in infrastructure development, heavy logistics, and facility management across South Africa, driving operational excellence.
@@ -58,10 +61,6 @@ function TopCategories() {
       <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
-      <SectionTitle className="centre__text">Industrial Capabilities</SectionTitle>
-      <ParagraphText className="centre__text">
-        Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
-      </ParagraphText>
       <ActivityGrid activities={activities} />
     </TopCategoriesStyles>
   );

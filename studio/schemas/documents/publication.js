@@ -2,29 +2,46 @@ import { FcLibrary } from 'react-icons/fc';
 
 export default {
   name: 'publication',
-  title: 'Publication & Books',
+  title: 'Corporate Credentials & Documentation', // Changed from "Publication & Books"
   type: 'document',
   icon: FcLibrary,
   fields: [
-    { name: 'title', title: 'Book/Series Title', type: 'string' },
-    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
+    { 
+      name: 'title', 
+      title: 'Document or Certification Name', // Changed from "Book/Series Title"
+      type: 'string' 
+    },
+    { 
+      name: 'slug', 
+      title: 'URL Identifier', // Changed from "Slug"
+      type: 'slug', 
+      options: { source: 'title' } 
+    },
     {
       name: 'author',
-      title: 'Author/Team',
+      title: 'Issuing Department / Team', // Changed from "Author/Team"
       type: 'reference',
       to: [{ type: 'author' }],
     },
-    { name: 'coverImage', title: 'Book Cover', type: 'customImage' },
+    { 
+      name: 'coverImage', 
+      title: 'Document Preview Image (or Badge)', // Changed from "Book Cover"
+      type: 'customImage' 
+    },
     {
       name: 'targetAudience',
-      title: 'Target Audience',
+      title: 'Restricted Stakeholders / Intended For', // Changed from "Target Audience"
       type: 'string',
-      description: 'e.g., Policymakers, Primary Students, General Public',
+      description: 'e.g., Tendering Committees, Legal Auditors, General Partners',
     },
-    { name: 'description', title: 'Synopsis', type: 'richText' },
+    { 
+      name: 'description', 
+      title: 'Executive Summary', // Changed from "Synopsis"
+      type: 'richText' 
+    },
     {
       name: 'documentUpload',
-      title: 'Document Upload (PDF, Word, etc.)',
+      title: 'Certified Digital Copy (PDF/Office)', // Changed from "Document Upload"
       type: 'file',
       options: {
         storeOriginalFilename: true, 
