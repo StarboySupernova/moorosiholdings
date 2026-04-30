@@ -64,12 +64,14 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   if (result.errors) throw result.errors;
-  const blogs = result.data.allSanityBlog.nodes;
-  const categories = result.data.allSanityCategory.nodes;
-  const authors = result.data.allSanityAuthor.nodes;
-  const activities = result.data.allSanityActivity.nodes;
-  const publications = result.data.allSanityPublication.nodes;
 
+  // Added filters to ensure we only process nodes that actually have a slug
+  const blogs = (result.data.allSanityBlog.nodes || []).filter(n => n.slug?.current);
+  const categories = (result.data.allSanityCategory.nodes || []).filter(n => n.slug?.current);
+  const authors = (result.data.allSanityAuthor.nodes || []).filter(n => n.slug?.current);
+  const activities = (result.data.allSanityActivity.nodes || []).filter(n => n.slug?.current);
+  const publications = (result.data.allSanityPublication.nodes || []).filter(n => n.slug?.current);
+  
   // creating single blog pages
   blogs.forEach((blog) => {
     createPage({
