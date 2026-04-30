@@ -1,6 +1,6 @@
-![Mwenje-Geology](./mwenje.png)
+![Moorosi Holdings](./mwenje.png)
 
-# Mwenje Geology. By Christian Simbarashe Dombodzvuku
+# Official web platform showcasing Tier-1 logistics, plant hire, and integrated facility management solutions. By Christian Simbarashe Dombodzvuku
 
 A complete full-stack web-app created with `JAMstack`. ([Gatsby.js](https://www.gatsbyjs.org/) & [Sanity.io](https://sanity.io)).
 

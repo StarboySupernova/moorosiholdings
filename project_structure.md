@@ -1386,11 +1386,11 @@ export default SidebarList;
     "start": "sanity start",
     "build": "sanity build"
   },
-  "keywords": [
-    "Diginotive",
-    "cars",
-    "technology",
-    "mechanic"
+  "keywords":[
+      "Moorosi",
+      "Logistics",
+      "Facilities Management",
+      "Civil Engineering"
   ],
   "dependencies": {
     "@sanity/base": "^2.25.4",
@@ -5597,8 +5597,8 @@ function Activity({ data, pageContext }) {
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="Core Services & R&D"
-            description="Driving innovation, building solutions, and creating impact for Zimbabwe. Our evidence-based intelligence translates national digital strategies from policy into prosperity."
+              title="Core Services & Divisions"
+              description="Uncompromising capability. We deploy specialized fleets for abnormal loads and execute integrated facility management—from MEP, Fire Safety, and Asphalt Resurfacing, to elite Security and Hygiene services."
           />
           <ActivityGrid activities={activities} />
           {numberOfPages > 1 && (
@@ -5656,8 +5656,8 @@ function AuthorList({ data, pageContext }) {
       <SEO title="About Us & Our Team" />
       <div className="container">
         <PageHeader
-          title="About Us"
-          description="Our multidisciplinary team of experts spans research, engineering, finance, operations, and governance. We represent exactly the kind of home-grown innovation institution that drives digital transformation."
+            title="Executive Leadership"
+            description="Led by industry veterans, our team guarantees precision, safety, and scale. As a 100% Black-Owned, Level 1 B-BBEE entity, partnering with Moorosi Holdings grants your business 135% Procurement Recognition."
         />
         <AuthorGrid authors={authors} />
         {numberOfPages > 1 && (
@@ -5785,8 +5785,8 @@ function Categories({ data, pageContext }) {
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <PageHeader
-            title="All Categories"
-            description="Our overarching intervention departments"
+              title="Operational Sectors"
+              description="Delivering robust, scalable solutions across Mining, Construction, Heavy Plant Logistics, and Integrated Facilities Management."
           />
           <CategoryGrid categories={categories} />
           {numberOfPages > 1 && (
@@ -5841,7 +5841,7 @@ function Publications({ data, pageContext }) {
     <PageSpace top={80} bottom={100}>
       <SEO title="Publications & Books" />
       <div className="container">
-        <PageHeader title="Publications & Books" description="Explore Diginotive's research and literature." />
+        <PageHeader title="Company Documents & Compliance" description="Access Moorosi Holdings' company profiles, B-BBEE certificates, CSD registration, and operational capabilities literature." />
         <BlogGrid blogs={publications} prefix="publications" />
         {numberOfPages > 1 && (
           <Pagination currentPage={currentPage} numberOfPages={numberOfPages} baseURL="/publications" />
@@ -6045,7 +6045,7 @@ function SingleBlog({ data }) {
   const blog = data.sanityBlog;
   return (
     <SingleBlogStyles>
-      <SEO title={`Diginotive-${blog.title}`} />
+      <SEO title={`Moorosi Holdings-${blog.title}`} />
       <PageSpace top={80} bottom={100}>
         <div className="container">
           <div className="blog-header">
@@ -6152,7 +6152,7 @@ function SingleCategory({ data }) {
     <PageSpace top={80} bottom={100}>
       <SingleCategoryStyles>
         <div className="container">
-          <SEO title={`Diginotive-${category.title}`} />
+          <SEO title={`Moorosi Holdings-${category.title}`} />
           <PageHeader title={category.title} className="pageHeader">
             <MyPortableText value={category._rawDescription} />
             {/* Add the check here */}

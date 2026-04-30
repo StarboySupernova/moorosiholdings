@@ -50,13 +50,13 @@ function TopCategories() {
       </ParagraphText>
       <SectionTitle className="centre__text">Mission</SectionTitle>
       <ParagraphText className="hero__text centre__text">
-        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors.
+        To deliver safe, reliable, and high-quality services in construction, transport, and facility maintenance, tailored to the dynamic needs of the public and private sectors. To provide unshakeable operational continuity for our clients through precision heavy-lift logistics, certified civil engineering, and proactive facility management.
       </ParagraphText>
       <SectionTitle className="centre__text">Our Values</SectionTitle>
       <ValueGrid DiginotiveValues={DiginotiveValues} />
       <SectionTitle className="centre__text">Our Objectives</SectionTitle>
       <ObjectiveGrid objectives={objectives} />
-      <SectionTitle className="centre__text">Core Capabilities</SectionTitle>
+      <SectionTitle className="centre__text">Industrial Capabilities</SectionTitle>
       <ParagraphText className="centre__text">
         Mining Support, Civil Engineering, Heavy Plant Logistics, and Complete Hard/Soft Facilities Management.
       </ParagraphText>
@@ -67,4 +67,3 @@ function TopCategories() {
 
 export default TopCategories;
 
-// https://0wfqubi4.api.sanity.io/v1/graphql/production/default
