@@ -81,6 +81,12 @@ exports.createPages = async ({ graphql, actions }) => {
       return;
     }
 
+    if (blog.slug.current.length > 75) {
+      console.warn(
+        `WARNING: Slug may be too long (${blog.slug.current.length} chars): ${blog.slug.current}`,
+      );
+    }
+
     createPage({
       path: `/spotlight/${blog.slug.current}`,
       component: singleBlogTemplate,
