@@ -54,7 +54,7 @@ const GlobalStyles = createGlobalStyle`
     background-size: contain;
     
     /* CRUCIAL: Low opacity so it's a "Ghost" */
-    opacity: 0.03; 
+    opacity: 0.2; 
     
     pointer-events: none; /* User can click through it */
     z-index: -1; /* Sits behind everything */
