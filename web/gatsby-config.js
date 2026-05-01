@@ -169,12 +169,12 @@ module.exports = {
       },
     },
     {
-  resolve: `gatsby-plugin-local-search`,
-  options: {
-    name: `publications`,
-    engine: `flexsearch`,
-    engineOptions: { tokenize: "forward" },
-    query: `
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `publications`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
     {
       allSanityPublication {
         nodes {
@@ -186,17 +186,63 @@ module.exports = {
       }
     } 
     `,
-    ref: "id",
-    index: ["title"],
-    store: ["id", "title", "slug", "coverImage"],
-    normalizer: ({ data }) =>
-      data.allSanityPublication.nodes.map((node) => ({
-        id: node.id,
-        title: node.title,
-        slug: node.slug,
-        coverImage: node.coverImage,
-      })),
-  },
-},
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title", "slug", "coverImage"],
+        normalizer: ({ data }) =>
+          data.allSanityPublication.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+            slug: node.slug,
+            coverImage: node.coverImage,
+          })),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `objectives`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
+          {
+            allSanityObjective {
+              nodes { id, title }
+            }
+          } 
+          `,
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title"],
+        normalizer: ({ data }) =>
+          data.allSanityObjective.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+          })),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `values`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
+          {
+            allSanityValue {
+              nodes { id, title }
+            }
+          } 
+          `,
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title"],
+        normalizer: ({ data }) =>
+          data.allSanityValue.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+          })),
+      },
+    },
   ],
 };

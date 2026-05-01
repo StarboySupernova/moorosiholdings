@@ -2226,12 +2226,12 @@ module.exports = {
       },
     },
     {
-  resolve: `gatsby-plugin-local-search`,
-  options: {
-    name: `publications`,
-    engine: `flexsearch`,
-    engineOptions: { tokenize: "forward" },
-    query: `
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `publications`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
     {
       allSanityPublication {
         nodes {
@@ -2243,18 +2243,64 @@ module.exports = {
       }
     } 
     `,
-    ref: "id",
-    index: ["title"],
-    store: ["id", "title", "slug", "coverImage"],
-    normalizer: ({ data }) =>
-      data.allSanityPublication.nodes.map((node) => ({
-        id: node.id,
-        title: node.title,
-        slug: node.slug,
-        coverImage: node.coverImage,
-      })),
-  },
-},
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title", "slug", "coverImage"],
+        normalizer: ({ data }) =>
+          data.allSanityPublication.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+            slug: node.slug,
+            coverImage: node.coverImage,
+          })),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `objectives`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
+          {
+            allSanityObjective {
+              nodes { id, title }
+            }
+          } 
+          `,
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title"],
+        normalizer: ({ data }) =>
+          data.allSanityObjective.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+          })),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `values`,
+        engine: `flexsearch`,
+        engineOptions: { tokenize: "forward" },
+        query: `
+          {
+            allSanityValue {
+              nodes { id, title }
+            }
+          } 
+          `,
+        ref: "id",
+        index: ["title"],
+        store: ["id", "title"],
+        normalizer: ({ data }) =>
+          data.allSanityValue.nodes.map((node) => ({
+            id: node.id,
+            title: node.title,
+          })),
+      },
+    },
   ],
 };
 
@@ -2337,6 +2383,19 @@ exports.createPages = async ({ graphql, actions }) => {
   
   // creating single blog pages
   blogs.forEach((blog) => {
+    console.log("Creating page for:", blog.id, blog.slug?.current); 
+
+    if (!blog.slug?.current) {
+      console.warn(`SKIPPING blog with no slug: ${blog.id}`);
+      return;
+    }
+
+    if (blog.slug.current.length > 75) {
+      console.warn(
+        `WARNING: Slug may be too long (${blog.slug.current.length} chars): ${blog.slug.current}`,
+      );
+    }
+
     createPage({
       path: `/spotlight/${blog.slug.current}`,
       component: singleBlogTemplate,
@@ -2350,6 +2409,22 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/categories/${category.slug.current}`,
       component: singleCategoryTemplate,
       context: { id: category.id },
+    });
+  });
+
+  categories.forEach((category) => {
+    console.log(
+      "Creating category page for:",
+      category.id,
+      category.slug?.current,
+    ); 
+
+    if (!category.slug?.current) return;
+
+    createPage({
+      path: `/categories/${category.slug.current}`,
+      component: singleCategoryTemplate,
+      context: { id: category.id }, 
     });
   });
 
@@ -3194,7 +3269,11 @@ function ObjectiveGrid({ objectives }) {
   return (
     <CategoryGridStyles>
       {objectives.map((item) => (
-        <ObjectiveItem key={item.id} description={item._rawDescription} />
+        <ObjectiveItem
+          key={item.id}
+          title={item.title}
+          description={item._rawDescription}
+        />
       ))}
     </CategoryGridStyles>
   );
@@ -3208,11 +3287,13 @@ export default ObjectiveGrid;
 import React from 'react';
 import MyPortableText from '../MyPortableText';
 import { CategoryItemStyles } from '../../styles/category/CategoryItemStyles';
+import { Title } from '../typography/Title'; 
 
-function ObjectiveItem({ description }) {
+function ObjectiveItem({ title, description }) { 
   return (
-    <CategoryItemStyles>
-      <div className="text">
+    <CategoryItemStyles className="objective-card"> 
+      <Title className="title">{title}</Title> 
+      <div className="text-wrap-container">
         <MyPortableText value={description} />
       </div>
     </CategoryItemStyles>
@@ -3220,7 +3301,6 @@ function ObjectiveItem({ description }) {
 }
 
 export default ObjectiveItem;
-
 ```
 ## `web\src\components\category\ValueGrid.js`
 ```
@@ -3703,6 +3783,7 @@ function TopCategories() {
       allSanityObjective {
         nodes {
           id
+          title
           _rawDescription
         }
       }
@@ -3958,16 +4039,16 @@ export default SearchField;
 ```
 ## `web\src\components\search\SearchModal.js`
 ```
-import axios from 'axios';
-import { graphql, useStaticQuery } from 'gatsby';
-import React, { useContext, useEffect, useState } from 'react';
-import { MdClose } from 'react-icons/md';
+import axios from "axios";
+import { graphql, useStaticQuery } from "gatsby";
+import React, { useContext, useEffect, useState } from "react";
+import { MdClose } from "react-icons/md";
 
-import { SearchModalContext } from '../../contexts/searchModalContext';
-import { SearchModalStyles } from '../../styles/search/SearchModalStyles';
-import ActionButton from '../buttons/ActionButton';
-import SearchResult from './SearchResult';
-import SearchField from './SearchField';
+import { SearchModalContext } from "../../contexts/searchModalContext";
+import { SearchModalStyles } from "../../styles/search/SearchModalStyles";
+import ActionButton from "../buttons/ActionButton";
+import SearchResult from "./SearchResult";
+import SearchField from "./SearchField";
 
 const query = graphql`
   {
@@ -3987,52 +4068,48 @@ const query = graphql`
       publicStoreURL
       publicIndexURL
     }
+    localSearchPublications {
+      publicStoreURL
+      publicIndexURL
+    }
+    localSearchObjectives {
+      publicStoreURL
+      publicIndexURL
+    }
+    localSearchValues {
+      publicStoreURL
+      publicIndexURL
+    }
   }
 `;
 
 function Search() {
-  const { isSearchModalOpen } = useContext(SearchModalContext); // extracting state from context
-  const [searchQuery, setSearchQuery] = useState('');
-  const { closeSearchModal } = useContext(SearchModalContext);
+  const { isSearchModalOpen, closeSearchModal } =
+    useContext(SearchModalContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [blogsIndexStore, setBlogsIndexStore] = useState(null);
   const [categoriesIndexStore, setCategoriesIndexStore] = useState(null);
   const [authorsIndexStore, setAuthorsIndexStore] = useState(null);
   const [activitiesIndexStore, setActivitiesIndexStore] = useState(null);
+  const [publicationsIndexStore, setPublicationsIndexStore] = useState(null);
+  const [objectivesIndexStore, setObjectivesIndexStore] = useState(null);
+  const [valuesIndexStore, setValuesIndexStore] = useState(null);
+
   const data = useStaticQuery(query);
 
   useEffect(() => {
     if (isSearchModalOpen) {
-      /* hiding scrollview when searching, & clearing previous search queries */
-      document.body.style.overflow = 'hidden';
-      setSearchQuery('');
+      document.body.style.overflow = "hidden";
+      setSearchQuery("");
     } else {
-      document.body.style.overflow = 'initial';
+      document.body.style.overflow = "initial";
     }
-  }, [
-    isSearchModalOpen,
-  ]); /* whenever searchmodalopen changes, the functionality here is run */
-
-  const {
-    publicStoreURL: blogsPublicStoreURL,
-    publicIndexURL: blogsPublicIndexURL,
-  } = data.localSearchBlogs;
-  const {
-    publicStoreURL: categoriesPublicStoreURL,
-    publicIndexURL: categoriesPublicIndexURL,
-  } = data.localSearchCategories;
-  const {
-    publicStoreURL: authorsPublicStoreURL,
-    publicIndexURL: authorsPublicIndexURL,
-  } = data.localSearchAuthors;
-  const {
-    publicStoreURL: activitiesPublicStoreURL,
-    publicIndexURL: activitiesPublicIndexURL,
-  } = data.localSearchActivities;
+  }, [isSearchModalOpen]);
 
   const handleOnFocus = async () => {
-    if (blogsIndexStore && categoriesIndexStore && authorsIndexStore) return;
+    if (blogsIndexStore && publicationsIndexStore) return;
     const [
-      /* destructuring here is giving an alias for the data returned ny Promise.all, and the order matters because they correspond */
       { data: blogsIndex },
       { data: blogsStore },
       { data: categoriesIndex },
@@ -4041,36 +4118,43 @@ function Search() {
       { data: authorsStore },
       { data: activitiesIndex },
       { data: activitiesStore },
+      { data: publicationsIndex },
+      { data: publicationsStore },
+      { data: objectivesIndex },
+      { data: objectivesStore },
+      { data: valuesIndex },
+      { data: valuesStore },
     ] = await Promise.all([
-      axios.get(`${blogsPublicIndexURL}`),
-      axios.get(`${blogsPublicStoreURL}`),
-      axios.get(`${categoriesPublicIndexURL}`),
-      axios.get(`${categoriesPublicStoreURL}`),
-      axios.get(`${authorsPublicIndexURL}`),
-      axios.get(`${authorsPublicStoreURL}`),
-      axios.get(`${activitiesPublicIndexURL}`),
-      axios.get(`${activitiesPublicStoreURL}`),
+      axios.get(`${data.localSearchBlogs.publicIndexURL}`),
+      axios.get(`${data.localSearchBlogs.publicStoreURL}`),
+      axios.get(`${data.localSearchCategories.publicIndexURL}`),
+      axios.get(`${data.localSearchCategories.publicStoreURL}`),
+      axios.get(`${data.localSearchAuthors.publicIndexURL}`),
+      axios.get(`${data.localSearchAuthors.publicStoreURL}`),
+      axios.get(`${data.localSearchActivities.publicIndexURL}`),
+      axios.get(`${data.localSearchActivities.publicStoreURL}`),
+      axios.get(`${data.localSearchPublications.publicIndexURL}`),
+      axios.get(`${data.localSearchPublications.publicStoreURL}`),
+      axios.get(`${data.localSearchObjectives.publicIndexURL}`),
+      axios.get(`${data.localSearchObjectives.publicStoreURL}`),
+      axios.get(`${data.localSearchValues.publicIndexURL}`),
+      axios.get(`${data.localSearchValues.publicStoreURL}`),
     ]);
-    /* setting state using data destructured after being received from the Promise */
-    setBlogsIndexStore({
-      index: blogsIndex,
-      store: blogsStore,
+
+    setBlogsIndexStore({ index: blogsIndex, store: blogsStore });
+    setCategoriesIndexStore({ index: categoriesIndex, store: categoriesStore });
+    setAuthorsIndexStore({ index: authorsIndex, store: authorsStore });
+    setActivitiesIndexStore({ index: activitiesIndex, store: activitiesStore });
+    setPublicationsIndexStore({
+      index: publicationsIndex,
+      store: publicationsStore,
     });
-    setCategoriesIndexStore({
-      index: categoriesIndex,
-      store: categoriesStore,
-    });
-    setAuthorsIndexStore({
-      index: authorsIndex,
-      store: authorsStore,
-    });
-    setActivitiesIndexStore({
-      index: activitiesIndex,
-      store: activitiesStore,
-    });
+    setObjectivesIndexStore({ index: objectivesIndex, store: objectivesStore });
+    setValuesIndexStore({ index: valuesIndex, store: valuesStore });
   };
 
   if (!isSearchModalOpen) return null;
+
   return (
     <SearchModalStyles>
       <div className="modal__container">
@@ -4086,7 +4170,10 @@ function Search() {
           blogsIndexStore &&
           categoriesIndexStore &&
           authorsIndexStore &&
-          activitiesIndexStore && (
+          activitiesIndexStore &&
+          publicationsIndexStore &&
+          objectivesIndexStore &&
+          valuesIndexStore(
             <div className="search__result">
               <SearchResult
                 searchQuery={searchQuery}
@@ -4094,8 +4181,11 @@ function Search() {
                 categoriesIndexStore={categoriesIndexStore}
                 authorsIndexStore={authorsIndexStore}
                 activitiesIndexStore={activitiesIndexStore}
+                publicationsIndexStore={publicationsIndexStore}
+                objectivesIndexStore={objectivesIndexStore}
+                valuesIndexStore={valuesIndexStore}
               />
-            </div>
+            </div>,
           )}
       </div>
     </SearchModalStyles>
@@ -4107,15 +4197,18 @@ export default Search;
 ```
 ## `web\src\components\search\SearchResult.js`
 ```
-import React from 'react';
-import { useFlexSearch } from 'react-use-flexsearch';
+import React from "react";
+import { useFlexSearch } from "react-use-flexsearch";
 import {
   AuthorSearchResultItem,
   BlogSearchResultItem,
   CategorySearchResultItem,
   ActivitySearchResultItem,
-} from './SearchResultItem';
-import ParagraphText from '../typography/ParagraphText';
+  PublicationSearchResultItem,
+  ObjectiveSearchResultItem,
+  ValueSearchResultItem,
+} from "./SearchResultItem";
+import ParagraphText from "../typography/ParagraphText";
 
 function SearchResult({
   searchQuery,
@@ -4123,33 +4216,54 @@ function SearchResult({
   categoriesIndexStore,
   authorsIndexStore,
   activitiesIndexStore,
+  publicationsIndexStore,
+  objectivesIndexStore,
+  valuesIndexStore,
 }) {
   const blogsResult = useFlexSearch(
     searchQuery,
     JSON.stringify(blogsIndexStore.index),
-    blogsIndexStore.store
+    blogsIndexStore.store,
   );
   const categoriesResult = useFlexSearch(
     searchQuery,
     JSON.stringify(categoriesIndexStore.index),
-    categoriesIndexStore.store
+    categoriesIndexStore.store,
   );
   const authorsResult = useFlexSearch(
     searchQuery,
     JSON.stringify(authorsIndexStore.index),
-    authorsIndexStore.store
+    authorsIndexStore.store,
   );
   const activitiesResult = useFlexSearch(
     searchQuery,
     JSON.stringify(activitiesIndexStore.index),
-    activitiesIndexStore.store
+    activitiesIndexStore.store,
+  );
+  const publicationsResult = useFlexSearch(
+    searchQuery,
+    JSON.stringify(publicationsIndexStore.index),
+    publicationsIndexStore.store,
+  );
+  const objectivesResult = useFlexSearch(
+    searchQuery,
+    JSON.stringify(objectivesIndexStore.index),
+    objectivesIndexStore.store,
+  );
+  const valuesResult = useFlexSearch(
+    searchQuery,
+    JSON.stringify(valuesIndexStore.index),
+    valuesIndexStore.store,
   );
 
   if (
     blogsResult.length === 0 &&
     categoriesResult.length === 0 &&
     authorsResult.length === 0 &&
-    activitiesResult.length === 0
+    activitiesResult.length === 0 &&
+    publicationsResult.length === 0 &&
+    objectivesResult.length === 0 &&
+    valuesResult.length === 0
   ) {
     return <ParagraphText>No Result Found.</ParagraphText>;
   }
@@ -4158,15 +4272,31 @@ function SearchResult({
     <>
       {blogsResult.length > 0 && (
         <>
-          <ParagraphText>Spotlight</ParagraphText>
+          <ParagraphText>Insights & News</ParagraphText>
           {blogsResult.map((result) => (
             <BlogSearchResultItem key={result.id} blog={result} />
           ))}
         </>
       )}
+      {publicationsResult.length > 0 && (
+        <>
+          <ParagraphText>Corporate Credentials</ParagraphText>
+          {publicationsResult.map((result) => (
+            <PublicationSearchResultItem key={result.id} publication={result} />
+          ))}
+        </>
+      )}
+      {activitiesResult.length > 0 && (
+        <>
+          <ParagraphText>Operational Pillars</ParagraphText>
+          {activitiesResult.map((result) => (
+            <ActivitySearchResultItem key={result.id} activity={result} />
+          ))}
+        </>
+      )}
       {categoriesResult.length > 0 && (
         <>
-          <ParagraphText>Categories</ParagraphText>
+          <ParagraphText>Sectors</ParagraphText>
           {categoriesResult.map((result) => (
             <CategorySearchResultItem key={result.id} category={result} />
           ))}
@@ -4174,17 +4304,25 @@ function SearchResult({
       )}
       {authorsResult.length > 0 && (
         <>
-          <ParagraphText>Team</ParagraphText>
+          <ParagraphText>Leadership Team</ParagraphText>
           {authorsResult.map((result) => (
             <AuthorSearchResultItem key={result.id} author={result} />
           ))}
         </>
       )}
-      {activitiesResult.length > 0 && (
+      {objectivesResult.length > 0 && (
         <>
-          <ParagraphText>Activities</ParagraphText>
-          {activitiesResult.map((result) => (
-            <ActivitySearchResultItem key={result.id} activity={result} />
+          <ParagraphText>Our Objectives</ParagraphText>
+          {objectivesResult.map((result) => (
+            <ObjectiveSearchResultItem key={result.id} objective={result} />
+          ))}
+        </>
+      )}
+      {valuesResult.length > 0 && (
+        <>
+          <ParagraphText>Our Values</ParagraphText>
+          {valuesResult.map((result) => (
+            <ValueSearchResultItem key={result.id} value={result} />
           ))}
         </>
       )}
@@ -4275,11 +4413,51 @@ function ActivitySearchResultItem({ activity }) {
   );
 }
 
+function PublicationSearchResultItem({ publication }) {
+  const { closeSearchModal } = useContext(SearchModalContext);
+  return (
+    <SearchResultItemStyles
+      to={`/publications/${publication.slug?.current}`}
+      onClick={() => closeSearchModal()}
+    >
+      {publication.coverImage?.asset && (
+        <GatsbyImage
+          image={publication.coverImage.asset.gatsbyImageData}
+          alt={publication.coverImage.alt || publication.title}
+          className="img"
+        />
+      )}
+      <Title className="title">{publication.title}</Title>
+    </SearchResultItemStyles>
+  );
+}
+
+function ObjectiveSearchResultItem({ objective }) {
+  const { closeSearchModal } = useContext(SearchModalContext);
+  return (
+    <SearchResultItemStyles to="/" onClick={() => closeSearchModal()}>
+      <Title className="title">{objective.title}</Title>
+    </SearchResultItemStyles>
+  );
+}
+
+function ValueSearchResultItem({ value }) {
+  const { closeSearchModal } = useContext(SearchModalContext);
+  return (
+    <SearchResultItemStyles to="/" onClick={() => closeSearchModal()}>
+      <Title className="title">{value.title}</Title>
+    </SearchResultItemStyles>
+  );
+}
+
 export {
   CategorySearchResultItem,
   BlogSearchResultItem,
   AuthorSearchResultItem,
   ActivitySearchResultItem,
+  PublicationSearchResultItem,
+  ObjectiveSearchResultItem,
+  ValueSearchResultItem,
 };
 
 ```
@@ -4772,12 +4950,47 @@ import styled from 'styled-components';
 export const CategoryGridStyles = styled.div`
   display: grid;
   margin-top: 3.5rem;
-  display: grid;
   gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  /* TARGET BOTH VALUE AND OBJECTIVE CARDS */
+  .value-card .bodyImage,
+  .objective-card .bodyImage {
+    width: 160px !important;    /* Mandated width */
+    height: 160px !important;   /* Mandated height */
+    float: left;                /* Magazine text wrap */
+    margin: 0 2rem 1rem 0;      /* Margin: Right and Bottom */
+    border-radius: 8px;
+    overflow: hidden;
+    shape-outside: inset(0%);   /* Ensures text flows around the square */
+  }
+
+  /* FORCE DISTORTION/FILL FOR BOTH */
+  .value-card .bodyImage img,
+  .objective-card .bodyImage img {
+    object-fit: fill !important; 
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* CLEARFIX to keep cards from breaking */
+  .value-card .text-wrap-container::after,
+  .objective-card .text-wrap-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    
+    .value-card .bodyImage,
+    .objective-card .bodyImage {
+      width: 120px !important;
+      height: 120px !important;
+      margin: 0 1.5rem 0.5rem 0;
+    }
   }
 `;
 

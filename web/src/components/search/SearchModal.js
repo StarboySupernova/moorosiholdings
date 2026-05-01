@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { graphql, useStaticQuery } from 'gatsby';
-import React, { useContext, useEffect, useState } from 'react';
-import { MdClose } from 'react-icons/md';
+import axios from "axios";
+import { graphql, useStaticQuery } from "gatsby";
+import React, { useContext, useEffect, useState } from "react";
+import { MdClose } from "react-icons/md";
 
-import { SearchModalContext } from '../../contexts/searchModalContext';
-import { SearchModalStyles } from '../../styles/search/SearchModalStyles';
-import ActionButton from '../buttons/ActionButton';
-import SearchResult from './SearchResult';
-import SearchField from './SearchField';
+import { SearchModalContext } from "../../contexts/searchModalContext";
+import { SearchModalStyles } from "../../styles/search/SearchModalStyles";
+import ActionButton from "../buttons/ActionButton";
+import SearchResult from "./SearchResult";
+import SearchField from "./SearchField";
 
 const query = graphql`
   {
@@ -27,52 +27,48 @@ const query = graphql`
       publicStoreURL
       publicIndexURL
     }
+    localSearchPublications {
+      publicStoreURL
+      publicIndexURL
+    }
+    localSearchObjectives {
+      publicStoreURL
+      publicIndexURL
+    }
+    localSearchValues {
+      publicStoreURL
+      publicIndexURL
+    }
   }
 `;
 
 function Search() {
-  const { isSearchModalOpen } = useContext(SearchModalContext); // extracting state from context
-  const [searchQuery, setSearchQuery] = useState('');
-  const { closeSearchModal } = useContext(SearchModalContext);
+  const { isSearchModalOpen, closeSearchModal } =
+    useContext(SearchModalContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [blogsIndexStore, setBlogsIndexStore] = useState(null);
   const [categoriesIndexStore, setCategoriesIndexStore] = useState(null);
   const [authorsIndexStore, setAuthorsIndexStore] = useState(null);
   const [activitiesIndexStore, setActivitiesIndexStore] = useState(null);
+  const [publicationsIndexStore, setPublicationsIndexStore] = useState(null);
+  const [objectivesIndexStore, setObjectivesIndexStore] = useState(null);
+  const [valuesIndexStore, setValuesIndexStore] = useState(null);
+
   const data = useStaticQuery(query);
 
   useEffect(() => {
     if (isSearchModalOpen) {
-      /* hiding scrollview when searching, & clearing previous search queries */
-      document.body.style.overflow = 'hidden';
-      setSearchQuery('');
+      document.body.style.overflow = "hidden";
+      setSearchQuery("");
     } else {
-      document.body.style.overflow = 'initial';
+      document.body.style.overflow = "initial";
     }
-  }, [
-    isSearchModalOpen,
-  ]); /* whenever searchmodalopen changes, the functionality here is run */
-
-  const {
-    publicStoreURL: blogsPublicStoreURL,
-    publicIndexURL: blogsPublicIndexURL,
-  } = data.localSearchBlogs;
-  const {
-    publicStoreURL: categoriesPublicStoreURL,
-    publicIndexURL: categoriesPublicIndexURL,
-  } = data.localSearchCategories;
-  const {
-    publicStoreURL: authorsPublicStoreURL,
-    publicIndexURL: authorsPublicIndexURL,
-  } = data.localSearchAuthors;
-  const {
-    publicStoreURL: activitiesPublicStoreURL,
-    publicIndexURL: activitiesPublicIndexURL,
-  } = data.localSearchActivities;
+  }, [isSearchModalOpen]);
 
   const handleOnFocus = async () => {
-    if (blogsIndexStore && categoriesIndexStore && authorsIndexStore) return;
+    if (blogsIndexStore && publicationsIndexStore) return;
     const [
-      /* destructuring here is giving an alias for the data returned ny Promise.all, and the order matters because they correspond */
       { data: blogsIndex },
       { data: blogsStore },
       { data: categoriesIndex },
@@ -81,36 +77,43 @@ function Search() {
       { data: authorsStore },
       { data: activitiesIndex },
       { data: activitiesStore },
+      { data: publicationsIndex },
+      { data: publicationsStore },
+      { data: objectivesIndex },
+      { data: objectivesStore },
+      { data: valuesIndex },
+      { data: valuesStore },
     ] = await Promise.all([
-      axios.get(`${blogsPublicIndexURL}`),
-      axios.get(`${blogsPublicStoreURL}`),
-      axios.get(`${categoriesPublicIndexURL}`),
-      axios.get(`${categoriesPublicStoreURL}`),
-      axios.get(`${authorsPublicIndexURL}`),
-      axios.get(`${authorsPublicStoreURL}`),
-      axios.get(`${activitiesPublicIndexURL}`),
-      axios.get(`${activitiesPublicStoreURL}`),
+      axios.get(`${data.localSearchBlogs.publicIndexURL}`),
+      axios.get(`${data.localSearchBlogs.publicStoreURL}`),
+      axios.get(`${data.localSearchCategories.publicIndexURL}`),
+      axios.get(`${data.localSearchCategories.publicStoreURL}`),
+      axios.get(`${data.localSearchAuthors.publicIndexURL}`),
+      axios.get(`${data.localSearchAuthors.publicStoreURL}`),
+      axios.get(`${data.localSearchActivities.publicIndexURL}`),
+      axios.get(`${data.localSearchActivities.publicStoreURL}`),
+      axios.get(`${data.localSearchPublications.publicIndexURL}`),
+      axios.get(`${data.localSearchPublications.publicStoreURL}`),
+      axios.get(`${data.localSearchObjectives.publicIndexURL}`),
+      axios.get(`${data.localSearchObjectives.publicStoreURL}`),
+      axios.get(`${data.localSearchValues.publicIndexURL}`),
+      axios.get(`${data.localSearchValues.publicStoreURL}`),
     ]);
-    /* setting state using data destructured after being received from the Promise */
-    setBlogsIndexStore({
-      index: blogsIndex,
-      store: blogsStore,
+
+    setBlogsIndexStore({ index: blogsIndex, store: blogsStore });
+    setCategoriesIndexStore({ index: categoriesIndex, store: categoriesStore });
+    setAuthorsIndexStore({ index: authorsIndex, store: authorsStore });
+    setActivitiesIndexStore({ index: activitiesIndex, store: activitiesStore });
+    setPublicationsIndexStore({
+      index: publicationsIndex,
+      store: publicationsStore,
     });
-    setCategoriesIndexStore({
-      index: categoriesIndex,
-      store: categoriesStore,
-    });
-    setAuthorsIndexStore({
-      index: authorsIndex,
-      store: authorsStore,
-    });
-    setActivitiesIndexStore({
-      index: activitiesIndex,
-      store: activitiesStore,
-    });
+    setObjectivesIndexStore({ index: objectivesIndex, store: objectivesStore });
+    setValuesIndexStore({ index: valuesIndex, store: valuesStore });
   };
 
   if (!isSearchModalOpen) return null;
+
   return (
     <SearchModalStyles>
       <div className="modal__container">
@@ -126,7 +129,10 @@ function Search() {
           blogsIndexStore &&
           categoriesIndexStore &&
           authorsIndexStore &&
-          activitiesIndexStore && (
+          activitiesIndexStore &&
+          publicationsIndexStore &&
+          objectivesIndexStore &&
+          valuesIndexStore(
             <div className="search__result">
               <SearchResult
                 searchQuery={searchQuery}
@@ -134,8 +140,11 @@ function Search() {
                 categoriesIndexStore={categoriesIndexStore}
                 authorsIndexStore={authorsIndexStore}
                 activitiesIndexStore={activitiesIndexStore}
+                publicationsIndexStore={publicationsIndexStore}
+                objectivesIndexStore={objectivesIndexStore}
+                valuesIndexStore={valuesIndexStore}
               />
-            </div>
+            </div>,
           )}
       </div>
     </SearchModalStyles>
