@@ -38,6 +38,36 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  /* THE GHOST WATERMARK */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;  /* Giant scale */
+    height: 80vw;
+    /* PATH TO YOUR LOGO */
+    background-image: url("/moorosi-logo.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    /* CRUCIAL: Low opacity so it's a "Ghost" */
+    opacity: 0.03; 
+    
+    pointer-events: none; /* User can click through it */
+    z-index: -1; /* Sits behind everything */
+    filter: grayscale(100%) brightness(200%); /* Makes it look etched */
+  }
+
+  @media only screen and (max-width: 768px) {
+    body::before {
+      width: 150vw; /* Even larger on mobile so only part of it shows */
+      opacity: 0.04;
+    }
+  }
+
   a {
     text-decoration: none;
     color: var(--white);
