@@ -47,14 +47,12 @@ const GlobalStyles = createGlobalStyle`
     transform: translate(-50%, -50%);
     width: 80vw;  /* Giant scale */
     height: 80vw;
-    /* PATH TO YOUR LOGO */
     background-image: url("/moorosi-logo.jpg"); 
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     
-    /* CRUCIAL: Low opacity so it's a "Ghost" */
-    opacity: 0.2; 
+    opacity: 0.15; 
     
     pointer-events: none; /* User can click through it */
     z-index: -1; /* Sits behind everything */
