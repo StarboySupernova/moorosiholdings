@@ -132,7 +132,7 @@ function Search() {
           activitiesIndexStore &&
           publicationsIndexStore &&
           objectivesIndexStore &&
-          valuesIndexStore(
+          valuesIndexStore && (    
             <div className="search__result">
               <SearchResult
                 searchQuery={searchQuery}
@@ -144,7 +144,7 @@ function Search() {
                 objectivesIndexStore={objectivesIndexStore}
                 valuesIndexStore={valuesIndexStore}
               />
-            </div>,
+            </div>
           )}
       </div>
     </SearchModalStyles>
