@@ -6,7 +6,7 @@ function Logo() {
   return (
     <LogoStyles to="/">
       <StaticImage 
-        src="../images/moorosi-logo.png" 
+        src="../images/mwenje.png" 
         alt="Moorosi Holdings Logo"
         placeholder="blurred"
         objectFit="cover" /* This ensures the logo fills the squircle */
