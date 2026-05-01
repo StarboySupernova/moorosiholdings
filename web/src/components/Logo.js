@@ -1,14 +1,16 @@
 import React from 'react';
-// import { GrTechnology } from 'react-icons/gr';
 import { StaticImage } from 'gatsby-plugin-image';
 import LogoStyles from '../styles/LogoStyles';
 
 function Logo() {
-  const width = 50;
-  const height = 50;
   return (
     <LogoStyles to="/">
-      <StaticImage src="../images/mwenje.jpg" width={width} height={height} />
+      <StaticImage 
+        src="../images/moorosi-logo.png" 
+        alt="Moorosi Holdings Logo"
+        placeholder="blurred"
+        objectFit="cover" /* This ensures the logo fills the squircle */
+      />
     </LogoStyles>
   );
 }
