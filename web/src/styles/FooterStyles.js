@@ -24,7 +24,7 @@ export const FooterStyles = styled.footer`
   .footer__socialList {
     margin-top: 1.5rem;
     li {
-      display: inline-block;
+      display: inline-block; 
       margin: 0 0.5rem;
       a {
         display: inline-block;
