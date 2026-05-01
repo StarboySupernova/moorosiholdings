@@ -8,17 +8,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   :root {
-    --primary: #00D2FF;
-    --secondary: #007BFF;
-    --darkBlue: #0A1128;
-    --darkPurple: #1A0B2E;
-    --black-1: #040814;
-    --black-2: #0B1325;
+    /* Moorosi Copper & Orange Theme */
+    --primary: #F37021; 
+    --secondary: #D45D1A; 
+    --darkBlue: #0A0A0A; /* Deep Charcoal/Black */
+    --darkPurple: #050505; 
+    --black-1: #080808; 
+    --black-2: rgba(25, 25, 25, 0.65); /* Glassmorphism Base */
     --white-1: #E2E8F0;
-    --gray: #8A98B0;
+    --gray: #9BA4B5;
     --grey: var(--gray);
-    --white: white;
-    --black: black;
+    --white: #ffffff;
+    --black: #000000;
   }
 
   html {
@@ -31,8 +32,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     width: 100%;
     font-family: 'Inter', sans-serif;
-    background: var(--black-1);
+    /* Deep dark background with a very subtle warm orange radial glow at the top */
+    background: radial-gradient(circle at top right, #1A0D05 0%, var(--black-1) 50%, var(--black) 100%);
     color: var(--white);
+    overflow-x: hidden;
   }
 
   a {
@@ -46,22 +49,20 @@ const GlobalStyles = createGlobalStyle`
     width: 90%;
   }
 
-  img,
-  svg {
+  img, svg {
     height: 100%;
     width: 100%;
   }
 
-  li,
-  ul {
+  li, ul {
     list-style: none;
   }
 
-  /* Global Animations */
+  /* Professional Entrance Animations */
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -69,16 +70,23 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  /* Dynamic Orange Glow */
   @keyframes glowPulse {
     0% {
-      box-shadow: 0 0 5px rgba(0, 210, 255, 0.2);
+      box-shadow: 0 0 8px rgba(243, 112, 33, 0.15), inset 0 0 0px rgba(243, 112, 33, 0);
     }
     50% {
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+      box-shadow: 0 0 25px rgba(243, 112, 33, 0.5), inset 0 0 10px rgba(243, 112, 33, 0.2);
     }
     100% {
-      box-shadow: 0 0 5px rgba(0, 210, 255, 0.2);
+      box-shadow: 0 0 8px rgba(243, 112, 33, 0.15), inset 0 0 0px rgba(243, 112, 33, 0);
     }
+  }
+
+  @keyframes borderGlow {
+    0% { border-color: rgba(243, 112, 33, 0.2); }
+    50% { border-color: rgba(243, 112, 33, 0.6); }
+    100% { border-color: rgba(243, 112, 33, 0.2); }
   }
 `;
 

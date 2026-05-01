@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const FooterStyles = styled.footer`
   padding: 5rem 0 2rem 0;
   text-align: center;
-  background: linear-gradient(135deg, #052A00, #081000);
+  background: linear-gradient(135deg, #0A0500, #000000); /* Dark orange/black gradient */
+  border-top: 1px solid rgba(243, 112, 33, 0.2);
   .footer__text {
     margin: 0 auto;
     margin-top: 1rem;

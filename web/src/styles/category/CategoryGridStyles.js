@@ -18,12 +18,13 @@ export const CategoryGridStyles = styled.div`
     shape-outside: inset(0%);   /* Ensures text flows around the square */
   }
 
-  /* FORCE DISTORTION/FILL FOR BOTH */
+  /* FORCE DISTORTION/FILL FOR BOTH & ADD GLOW */
   .value-card .bodyImage img,
   .objective-card .bodyImage img {
     object-fit: fill !important; 
     width: 100% !important;
     height: 100% !important;
+    animation: glowPulse 3s infinite alternate; /* Dynamic Glow added here */
   }
 
   /* CLEARFIX to keep cards from breaking */
