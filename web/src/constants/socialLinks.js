@@ -12,7 +12,7 @@ import { IoIosMailUnread } from 'react-icons/io';
 export const socialLinks = [
   {
     name: 'telephone',
-    url: 'tel:+27739775953',
+    url: 'tel:+27782629367',
     icon: <FaPhoneSquareAlt />,
   },
   {
@@ -22,7 +22,7 @@ export const socialLinks = [
   },
   {
     name: 'whatsapp',
-    url: `https://wa.me/27739775953?text=${encodeURIComponent(
+    url: `https://wa.me/27782629367?text=${encodeURIComponent(
       "Hello Moorosi Holdings, I am interested in your logistics and facility management capabilities. Please contact me."
     )}`,
     icon: <FaWhatsappSquare />,
